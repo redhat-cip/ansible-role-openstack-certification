@@ -35,7 +35,7 @@ Available options for `plugin_type` are :
 
 Available options for `supported_apis_and_extensions` are :
 
-  * `volumes`,`snapshots,`volume_types`,`qos`,`backups`,`quota-set-extension`,`multiple-backends`,`availability`,`extensions`,`volume_transfers,
+  * `volumes`,`snapshots`,`volume_types`,`qos`,`backups`,`quota-set-extension`,`multiple-backends`,`availability`,`extensions`,`volume_transfers,
     vpnaas`,`service_type_management`,`security_groups`,`routers`,`ports`,`networks`,`subnets`,`metering`,`load_balancer`,`fwaas`,`floating_ips,
     extra_dhcp_options`,`allowed_address_pair`,`agent_management`,`dhcp_agent_scheduler`,`provider_networks`,`l3_agent_scheduler`,`lbaas_agent_scheduler,
     quotas`,`port_security`,`address_scopes`,`subnetpools`,`lbaas_health_monitor`,`lbaas_listeners`,`load_balancers`,`lbaas_members`,`lbaas_pools,
