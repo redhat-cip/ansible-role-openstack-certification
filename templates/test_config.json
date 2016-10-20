@@ -7,5 +7,5 @@
   "plugin_type": "{{ plugin_type }}",
   "supported_apis_and_extensions": [{{ '"%s"' % '","'.join(supported_apis_and_extensions) }}],
   "lbaas_api_version": "{{ lbaas_api_version | default('v2') }}",
-  "undercloud_strackrc": "{{ undercloud_stackrc | default('/home/stack/stackrc') }}"
+  "undercloud_stackrc": "{{ undercloud_stackrc | default('/home/stack/stackrc') }}"
 }
