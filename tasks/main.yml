@@ -41,6 +41,7 @@
   lineinfile:
     dest: /home/stack/key.file
     line: '{{ certification_id }}'
+    create: yes
 
 - name: Run specific certification tests
   shell: rhcert-ci run --key-file /home/stack/key.file --debug high

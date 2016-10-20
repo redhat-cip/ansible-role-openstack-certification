@@ -15,3 +15,15 @@ in details.
 | Variable name    | Default  | Type    | Description                                        |
 |------------------|----------|---------|----------------------------------------------------|
 | certification_id | None     | string  | The SandboxID for running certification test suite |
+
+
+## Example
+
+```
+---
+- hosts: undercloud
+  remote_user: stack
+  become: yes
+  roles:
+    - openstack-certification
+```
