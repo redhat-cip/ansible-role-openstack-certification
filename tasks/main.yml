@@ -1,0 +1,52 @@
+---
+- name: Subscribe to rhel-7-server-cert-rpms
+  shell: subscription-manager repos --enable=rhel-7-server-cert-rpms
+
+- name: Install Red Hat certification packages
+  package:
+    name: '{{ item }}'
+  with_items:
+    - redhat-certification
+    - redhat-certification-openstack
+        
+- name: Start rhcertd
+  shell: rhcertd start
+
+- name: Copy the sample file
+  shell: cp /etc/redhat-certification-openstack/{{ item }}.sample /etc/redhat-certification-openstack/{{ item }}
+  with_items:
+    - rally_tasks_cinder.json
+    - rally_tasks_neutron.json
+    - tempest.conf
+    - test_config.json
+  args:
+    creates: /etc/redhat-certification-openstack/{{ item }}
+
+- name: Edit accordingly test_config.json - keystone_auth_url
+  shell: "source /home/stack/overcloudrc && sed -i 's#\"keystone_auth_url\" : \\(.*\\),#\"keystone_auth_url\" : \"'$OS_AUTH_URL'\",#g' /etc/redhat-certification-openstack/test_config.json"
+
+- name: Edit accordingly test_config.json - admin_username
+  shell: "source /home/stack/overcloudrc && sed -i 's#\"admin_username\": \\(.*\\),#\"admin_username\": \"'$OS_USERNAME'\",#g' /etc/redhat-certification-openstack/test_config.json"
+
+- name: Edit accordingly test_config.json - admin_password
+  shell: "source /home/stack/overcloudrc && sed -i 's#\"admin_password\": \\(.*\\),#\"admin_password\": \"'$OS_PASSWORD'\",#g' /etc/redhat-certification-openstack/test_config.json"
+
+- name: Edit accordingly test_config.json - admin_tenant_name
+  shell: "source /home/stack/overcloudrc && sed -i 's#\"admin_tenant_name\": \\(.*\\),#\"admin_tenant_name\": \"'$OS_TENANT_NAME'\",#g' /etc/redhat-certification-openstack/test_config.json"
+
+- name: Edit accordingly test_config.json - undercloud_stackrc
+  shell: "sed -i 's#\"undercloud_stackrc\": \\(.*\\)#\"undercloud_strackrc\": \"'/home/stack/stackrc'\"#g' /etc/redhat-certification-openstack/test_config.json"
+
+- name: Create the keyfile
+  lineinfile:
+    dest: /home/stack/key.file
+    line: '{{ certification_id }}'
+
+- name: Run specific certification tests
+  shell: rhcert-ci run --key-file /home/stack/key.file --debug high
+
+- name: Submit certification test results
+  shell: rhcert-ci submit --key-file /home/stack/key.file --debug high
+
+- name: Get validation results
+  shell: rhcert-ci results --key-file /home/stack/key.file --debug high
