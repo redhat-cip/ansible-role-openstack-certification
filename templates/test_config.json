@@ -1,0 +1,11 @@
+{
+  "keystone_auth_url" : "{{ keystone_auth_url.stdout }}",
+  "keystone_region_name": "{% if keystone_region_name.stdout %}{{ keystone_region_name }}{% else %}RegionOne{% endif %}",
+  "admin_username": "{{ admin_username.stdout }}",
+  "admin_password": "{{ admin_password.stdout }}",
+  "admin_tenant_name": "{{ admin_tenant_name.stdout }}",
+  "plugin_type": "{{ plugin_type }}",
+  "supported_apis_and_extensions": [{{ '"%s"' % '","'.join(supported_apis_and_extensions) }}],
+  "lbaas_api_version": "{{ lbaas_api_version | default('v2') }}",
+  "undercloud_strackrc": "{{ undercloud_stackrc | default('/home/stack/stackrc') }}"
+}

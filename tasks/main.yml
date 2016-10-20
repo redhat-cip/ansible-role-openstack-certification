@@ -18,24 +18,33 @@
     - rally_tasks_cinder.json
     - rally_tasks_neutron.json
     - tempest.conf
-    - test_config.json
   args:
     creates: /etc/redhat-certification-openstack/{{ item }}
 
-- name: Edit accordingly test_config.json - keystone_auth_url
-  shell: "source /home/stack/overcloudrc && sed -i 's#\"keystone_auth_url\" : \\(.*\\),#\"keystone_auth_url\" : \"'$OS_AUTH_URL'\",#g' /etc/redhat-certification-openstack/test_config.json"
+- name: Register keystone_auth_url
+  shell: "source /home/stack/overcloudrc && echo \"$OS_AUTH_URL\""
+  register: keystone_auth_url
 
-- name: Edit accordingly test_config.json - admin_username
-  shell: "source /home/stack/overcloudrc && sed -i 's#\"admin_username\": \\(.*\\),#\"admin_username\": \"'$OS_USERNAME'\",#g' /etc/redhat-certification-openstack/test_config.json"
+- name: Register keystone_region_name
+  shell: "source /home/stack/overcloudrc && echo \"$OS_REGION_NAME\""
+  register: keystone_region_name
 
-- name: Edit accordingly test_config.json - admin_password
-  shell: "source /home/stack/overcloudrc && sed -i 's#\"admin_password\": \\(.*\\),#\"admin_password\": \"'$OS_PASSWORD'\",#g' /etc/redhat-certification-openstack/test_config.json"
+- name: Register admin_username
+  shell: "source /home/stack/overcloudrc && echo \"$OS_USERNAME\""
+  register: admin_username
 
-- name: Edit accordingly test_config.json - admin_tenant_name
-  shell: "source /home/stack/overcloudrc && sed -i 's#\"admin_tenant_name\": \\(.*\\),#\"admin_tenant_name\": \"'$OS_TENANT_NAME'\",#g' /etc/redhat-certification-openstack/test_config.json"
+- name: Register admin_password
+  shell: "source /home/stack/overcloudrc && echo \"$OS_PASSWORD\""
+  register: admin_password
 
-- name: Edit accordingly test_config.json - undercloud_stackrc
-  shell: "sed -i 's#\"undercloud_stackrc\": \\(.*\\)#\"undercloud_strackrc\": \"'/home/stack/stackrc'\"#g' /etc/redhat-certification-openstack/test_config.json"
+- name: Register keystone_auth_url
+  shell: "source /home/stack/overcloudrc && echo \"$OS_TENANT_NAME\""
+  register: admin_tenant_name
+
+- name: Create the test_config.json file
+  template:
+    src: test_config.json
+    dest: /etc/redhat-certification-openstack/test_config.json
 
 - name: Create the keyfile
   lineinfile:
