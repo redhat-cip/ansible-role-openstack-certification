@@ -35,13 +35,107 @@ Available options for `plugin_type` are :
 
 Available options for `supported_apis_and_extensions` are :
 
-  * `volumes`,`snapshots`,`volume_types`,`qos`,`backups`,`quota-set-extension`,`multiple-backends`,`availability`,`extensions`,`volume_transfers,
-    vpnaas`,`service_type_management`,`security_groups`,`routers`,`ports`,`networks`,`subnets`,`metering`,`load_balancer`,`fwaas`,`floating_ips,
-    extra_dhcp_options`,`allowed_address_pair`,`agent_management`,`dhcp_agent_scheduler`,`provider_networks`,`l3_agent_scheduler`,`lbaas_agent_scheduler,
-    quotas`,`port_security`,`address_scopes`,`subnetpools`,`lbaas_health_monitor`,`lbaas_listeners`,`load_balancers`,`lbaas_members`,`lbaas_pools,
-    flavors_extensions`,`qos`,`bgp`,`plugins`,`images`,`node-group-templates`,`cluster-templates`,`clusters`,`data-sources`,`job-binary-internals,
-    job-binaries`,`jobs`,`job-executions`,`accounts`,`containers`,`objects`,`images`,`image_members`,`image_tags`,`versions`,`limits`,`flavors`,`database_instances
-    databases`,`database_users`,`tokens`,`roles`,`services`,`tenants`,`users`,`credentials`,`domains`,`endpoints`,`groups`,`projects`,`policies`,`regions`,`trusts`
+
+  * `blockstorage`:
+
+    * `volumes`
+    * `snapshots`
+    * `volume_types`
+    * `qos`
+    * `backups`
+    * `quota-set-extension`
+    * `multiple-backends`
+    * `availability`
+    * `extensions`
+    * `volume_transfers`
+
+
+  * `networking`:
+
+    * `vpnaas`
+    * `service_type_management`
+    * `security_groups`
+    * `routers`
+    * `ports`
+    * `networks`
+    * `subnets`
+    * `metering`
+    * `load_balancer`
+    * `fwaas`
+    * `floating_ips`
+    * `extra_dhcp_options`
+    * `allowed_address_pair`
+    * `agent_management`
+    * `dhcp_agent_scheduler`
+    * `provider_networks`
+    * `l3_agent_scheduler`
+    * `lbaas_agent_scheduler`
+    * `quotas`
+    * `address_scopes`
+    * `port_security`
+    * `flavors_extensions`
+    * `qos`
+    * `subnetpools`
+    * `load_balancers`
+    * `lbaas_members`
+    * `lbaas_pools`
+    * `lbaas_listeners`
+    * `lbaas_health_monitor`
+    * `bgp`
+
+
+  * `dataprocessing`:
+
+    * `versions`
+    * `limits`
+    * `flavors`
+    * `databases`
+    * `database_users`
+    * `database_instances`
+
+
+  * `objectstorage`:
+
+    * `accounts`
+    * `containers`
+    * `objects`
+
+
+  * `image`:
+
+    * `images`
+    * `image_data`
+    * `image_tags`
+    * `image_members`
+    * `image_schemas`
+
+
+  * `database`:
+
+    * `versions`
+    * `limits`
+    * `flavors`
+    * `databases`
+    * `database_users`
+    * `database_instances`
+
+
+  * `identity`:
+
+    * `tokens`
+    * `roles`
+    * `services`
+    * `tenants`
+    * `users`
+    * `credentials`
+    * `domains`
+    * `endpoints`
+    * `groups`
+    * `projects`
+    * `policies`
+    * `regions`
+    * `trusts`
+
 
 
 ## Example
@@ -54,6 +148,9 @@ Available options for `supported_apis_and_extensions` are :
   vars:
     certification_id: AVALIDCERTIFICATIONID
     plugin_type: blockstorage
+    supported_apis_and_extensions:
+      - volumes
+      - backups
   roles:
     - openstack-certification
 ```

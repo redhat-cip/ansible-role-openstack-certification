@@ -17,7 +17,6 @@
   with_items:
     - rally_tasks_cinder.json
     - rally_tasks_neutron.json
-    - tempest.conf
   args:
     creates: /etc/redhat-certification-openstack/{{ item }}
 

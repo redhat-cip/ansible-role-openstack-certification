@@ -1,6 +1,6 @@
 {
   "keystone_auth_url" : "{{ keystone_auth_url.stdout }}",
-  "keystone_region_name": "{% if keystone_region_name.stdout %}{{ keystone_region_name }}{% else %}RegionOne{% endif %}",
+  "keystone_region_name": "{% if keystone_region_name.stdout %}{{ keystone_region_name }}{% else %}regionOne{% endif %}",
   "admin_username": "{{ admin_username.stdout }}",
   "admin_password": "{{ admin_password.stdout }}",
   "admin_tenant_name": "{{ admin_tenant_name.stdout }}",
