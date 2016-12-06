@@ -6,8 +6,8 @@
   package:
     name: '{{ item }}'
   with_items:
-    - redhat-certification
-    - redhat-certification-openstack
+    - redhat-certification-4.1-20161031.el7
+    - redhat-certification-openstack-1.5.3-1.el7
         
 - name: Start rhcertd
   shell: rhcertd start
