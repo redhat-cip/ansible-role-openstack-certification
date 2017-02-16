@@ -1,8 +1,10 @@
 ---
 - name: Subscribe to rhel-7-server-cert-rpms
+  become: True
   shell: subscription-manager repos --enable=rhel-7-server-cert-rpms
 
 - name: Install Red Hat certification packages
+  become: True
   package:
     name: '{{ item }}'
   with_items:
@@ -26,20 +28,24 @@
   register: admin_tenant_name
 
 - name: Create the test_config.json file
+  become: True
   template:
     src: test_config.json
     dest: /etc/redhat-certification-openstack/test_config.json
 
 - name: Run certification test suite
+  become: True
   shell: >
     rhcert-ci clean all &&
     rhcert-ci run {{ '--test %s' % " --test ".join(certification_tests) }}
   ignore_errors: True
 
 - name: Retrieve certification test resulsts
+  become: True
   shell: rhcert-ci print | tee cert.txt
 
 - name: Download result file
+  become: True
   fetch:
     src: cert.txt
     dest: "{{ lookup('env', 'PWD') }}/cert.txt"
