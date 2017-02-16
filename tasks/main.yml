@@ -6,27 +6,12 @@
   package:
     name: '{{ item }}'
   with_items:
-    - redhat-certification-4.1-20161031.el7
-    - redhat-certification-openstack-1.5.3-1.el7
-        
-- name: Start rhcertd
-  shell: rhcertd start
-
-- name: Copy the sample file
-  shell: cp /etc/redhat-certification-openstack/{{ item }}.sample /etc/redhat-certification-openstack/{{ item }}
-  with_items:
-    - rally_tasks_cinder.json
-    - rally_tasks_neutron.json
-  args:
-    creates: /etc/redhat-certification-openstack/{{ item }}
+    - redhat-certification
+    - redhat-certification-openstack
 
 - name: Register keystone_auth_url
   shell: "source /home/stack/overcloudrc && echo \"$OS_AUTH_URL\""
   register: keystone_auth_url
-
-- name: Register keystone_region_name
-  shell: "source /home/stack/overcloudrc && echo \"$OS_REGION_NAME\""
-  register: keystone_region_name
 
 - name: Register admin_username
   shell: "source /home/stack/overcloudrc && echo \"$OS_USERNAME\""
@@ -45,17 +30,17 @@
     src: test_config.json
     dest: /etc/redhat-certification-openstack/test_config.json
 
-- name: Create the keyfile
-  lineinfile:
-    dest: /home/stack/key.file
-    line: '{{ certification_id }}'
-    create: yes
+- name: Run certification test suite
+  shell: >
+    rhcert-ci clean all &&
+    rhcert-ci run {{ '--test %s' % " --test ".join(certification_tests) }}
+  ignore_errors: True
 
-- name: Run specific certification tests
-  shell: rhcert-ci run --key-file /home/stack/key.file --debug high
+- name: Retrieve certification test resulsts
+  shell: rhcert-ci print | tee cert.txt
 
-- name: Submit certification test results
-  shell: rhcert-ci submit --key-file /home/stack/key.file --debug high
-
-- name: Get validation results
-  shell: rhcert-ci results --key-file /home/stack/key.file --debug high
+- name: Download result file
+  fetch:
+    src: cert.txt
+    dest: "{{ lookup('env', 'PWD') }}/cert.txt"
+    flat: yes

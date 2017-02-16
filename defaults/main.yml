@@ -1,77 +1,62 @@
 ---
 supported_apis_and_extensions:
-  - volumes
+  - qos
+  - clone
   - snapshots
   - volume_types
-  - qos
-  - backups
   - quota-set-extension
+  - backups
   - multiple-backends
   - availability
-  - extensions
+  - image_metadata
+  - consistencygroups
   - volume_transfers
-  - vpnaas
-  - service_type_management
-  - security_groups
-  - routers
-  - ports
-  - networks
-  - subnets
-  - metering
+  - extensions
+  - volumes
+  - user_messages
   - load_balancer
-  - fwaas
-  - floating_ips
-  - extra_dhcp_options
-  - allowed_address_pair
+  - subnets
   - agent_management
-  - dhcp_agent_scheduler
-  - provider_networks
-  - l3_agent_scheduler
-  - lbaas_agent_scheduler
-  - quotas
-  - port_security
-  - address_scopes
-  - subnetpools
-  - lbaas_health_monitor
-  - lbaas_listeners
-  - load_balancers
-  - lbaas_members
-  - lbaas_pools
-  - flavors_extensions
   - qos
-  - bgp
-  - plugins
-  - images
-  - node-group-templates
-  - cluster-templates
-  - clusters
-  - data-sources
-  - job-binary-internals
-  - job-binaries
-  - jobs
-  - job-executions
-  - accounts
-  - containers
-  - objects
-  - images
-  - image_members
-  - image_tags
+  - provider_networks
+  - lbaas_listeners
+  - service_type_management
+  - lbaas_agent_scheduler
+  - fwaas
+  - metering
+  - extra_dhcp_options
+  - quotas
+  - dhcp_agent_scheduler
+  - port_security
+  - trunk
+  - lbaas_pools
+  - load_balancers
+  - networks
+  - security_groups
+  - revisions
+  - subnetpools
+  - flavors_extensions
+  - l3_agent_scheduler
+  - lbaas_members
   - versions
-  - limits
-  - flavors
-  - database_instances
-  - databases
-  - database_users
-  - tokens
-  - roles
-  - services
-  - tenants
-  - users
-  - credentials
-  - domains
-  - endpoints
-  - groups
-  - projects
-  - policies
-  - regions
-  - trusts
+  - floating_ips
+  - address_scopes
+  - bgp
+  - allowed_address_pair
+  - routers
+  - extensions
+  - vpnaas
+  - ports
+  - lbaas_health_monitor
+  - cluster-templates
+  - jobs
+  - job-binaries
+  - job-binary-internals
+  - node-group-templates
+  - data-sources
+  - plugins
+
+certification_tests:
+  - self_check
+  - supportable
+  - director
