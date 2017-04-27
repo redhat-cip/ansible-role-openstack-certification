@@ -1,0 +1,14 @@
+galaxy_info:
+  author: Distributed-CI Team
+  description: An Ansible role to run the Red Hat OpenStack certification test suite
+  company: Red Hat
+  license: license (Apache)
+  min_ansible_version: 2.0
+  platforms:
+  - name: EL
+    versions:
+    - 7
+
+  galaxy_tags: []
+
+dependencies: []
