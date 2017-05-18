@@ -1,5 +1,5 @@
 ---
-supported_apis_and_extensions:
+openstack_certification_supported_apis_and_extensions:
   - qos
   - clone
   - snapshots
@@ -56,7 +56,7 @@ supported_apis_and_extensions:
   - data-sources
   - plugins
 
-certification_tests:
+openstack_certification_tests:
   - self_check
   - supportable
   - director

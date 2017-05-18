@@ -37,7 +37,7 @@
   become: True
   shell: >
     rhcert-ci clean all &&
-    rhcert-ci run {{ '--test %s' % " --test ".join(certification_tests) }}
+    rhcert-ci run {{ '--test %s' % " --test ".join(openstack_certification_tests) }}
   ignore_errors: True
 
 - name: Retrieve certification test resulsts

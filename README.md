@@ -12,9 +12,10 @@ in details.
 
 ## Role Variables
 
-| Variable name                 | Required | Default       | Type    | Description                                                           |
-|-------------------------------|----------|---------------|---------|-----------------------------------------------------------------------|
-| supported_apis_and_extensions | False    | All available | array   | List of supported apis and extensions. Available options listed below |
+| Variable name                                         | Required | Default                            | Type    | Description                                                           |
+|-------------------------------------------------------|----------|------------------------------------|---------|-----------------------------------------------------------------------|
+| openstack_certification_supported_apis_and_extensions | False    | All available                      | array   | List of supported apis and extensions. Available options listed below |
+| openstack_certification_tests                         | False    | self_check, supportable, directory | array   | List of suite of tests to run.                                        |
 
 
 ## Supported APIs and extensions:
@@ -85,7 +86,7 @@ Available options for `supported_apis_and_extensions` are :
   remote_user: stack
   become: yes
   vars:
-    supported_apis_and_extensions:
+    openstack_certification_supported_apis_and_extensions:
       - volumes
       - backups
   roles:
