@@ -1,4 +1,7 @@
 ---
+openstack_certification_output_format: text
+openstack_certification_output_filename: cert.txt
+
 openstack_certification_supported_apis_and_extensions:
   - qos
   - clone
