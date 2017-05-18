@@ -42,11 +42,11 @@
 
 - name: Retrieve certification test resulsts
   become: True
-  shell: rhcert-ci print | tee cert.txt
+  shell: rhcert-ci print --format {{ openstack_certification_output_format }} | tee {{ openstack_certification_output_filename }}
 
 - name: Download result file
   become: True
   fetch:
     src: cert.txt
-    dest: "{{ lookup('env', 'PWD') }}/cert.txt"
+    dest: "{{ lookup('env', 'PWD') }}/{{ openstack_certification_output_filename }}"
     flat: yes
