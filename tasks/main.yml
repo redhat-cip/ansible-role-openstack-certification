@@ -47,6 +47,6 @@
 - name: Download result file
   become: True
   fetch:
-    src: cert.txt
+    src: '{{ openstack_certification_output_filename }}'
     dest: "{{ lookup('env', 'PWD') }}/{{ openstack_certification_output_filename }}"
     flat: yes
