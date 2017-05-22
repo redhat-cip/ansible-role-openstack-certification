@@ -2,6 +2,102 @@
 openstack_certification_output_format: text
 openstack_certification_output_filename: cert.txt
 
+# Output format of the rhcert-ci run command
+# Allowed options are:
+#   - text (default)
+#   - junit
+#   - html
+#
+openstack_certification_output_format: text
+
+
+# Filename in which the output of rhcert-ci is recorded
+#
+openstack_certification_output_filename: cert.txt
+
+
+# Test type that should be passed to rhcert-ci run command
+# Allowed options are:
+#   - test (default)
+#   - tag
+#   - platform
+#
+openstack_certification_test_type: test
+
+# If one wants to enable test (default behavior)
+# make sure to set openstack_certification_test_type: test
+#
+openstack_certification_tests:
+  - self_check
+  - supportable
+  - director
+#  - tempest_config
+#  - sahara
+#  - cinder_consistency_groups
+#  - cinder_volumes
+#  - manila_share_extend
+#  - manila_share_managed
+#  - manila_share_shrink
+#  - manila_shares
+#  - manila_snapshot_managed
+#  - manila_snapshot_mountable
+#  - manila_snapshot_revert_to_snapshot
+#  - manila_snapshot_share_from_snapshot
+#  - manila_snapshots
+#  - neutron_address_scope
+#  - neutron_agents
+#  - neutron_attribute_extensions
+#  - neutron_availability_zones
+#  - neutron_dhcp_extra
+#  - neutron_flavor
+#  - neutron_gateway_extra
+#  - neutron_gman
+#  - neutron_ip_availability
+#  - neutron_ipv4
+#  - neutron_ipv6
+#  - neutron_l2_multi_provider
+#  - neutron_l3_extra_route
+#  - neutron_l3_flavors
+#  - neutron_l3_ha
+#  - neutron_lbaasv2
+#  - neutron_metering
+#  - neutron_mtu
+#  - neutron_qos
+#  - neutron_rbac
+#  - neutron_security_groups
+#  - neutron_service_types
+#  - neutron_subnet_allocation
+#  - neutron_subnet_default_pool
+#  - neutron_tags
+#  - neutron_trunk
+
+
+# If one wants to enable tags rather than test
+# make sure to set openstack_certification_test_type: tag
+#
+# openstack_certification_tags:
+#   - osqa
+#   - portable
+#   - certification
+#   - realtime
+#   - manila
+#   - network
+#   - virtualization
+#   - wlan
+#   - cinder
+#   - usb
+#   - neutron
+
+
+# If one wants to enable program rather than test
+# make sure to set openstack_certification_test_type: program
+#
+# openstack_certification_program:
+#   - cloud
+#   - openstack
+#   - hardware
+#
+
 openstack_certification_supported_apis_and_extensions:
   - qos
   - clone
@@ -58,8 +154,3 @@ openstack_certification_supported_apis_and_extensions:
   - node-group-templates
   - data-sources
   - plugins
-
-openstack_certification_tests:
-  - self_check
-  - supportable
-  - director

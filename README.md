@@ -12,15 +12,92 @@ in details.
 
 ## Role Variables
 
-| Variable name                                         | Required | Default                            | Type    | Description                                                           |
-|-------------------------------------------------------|----------|------------------------------------|---------|-----------------------------------------------------------------------|
-| openstack_certification_supported_apis_and_extensions | False    | All available                      | array   | List of supported apis and extensions. Available options listed below |
-| openstack_certification_tests                         | False    | self_check, supportable, directory | array   | List of suite of tests to run.                                        |
+| Variable name                                         | Required | Default                         | Type    | Description                                                           |
+|-------------------------------------------------------|----------|---------------------------------|---------|-----------------------------------------------------------------------|
+| openstack_certification_output_format                 | False    | text                            | String  | Output format for rhcert-ci print. (values: text, junit, html)        |
+| openstack_certification_output_filename               | False    | cert.txt                        | String  | Output filename for rhcert-ci print                                   |
+| openstack_certification_test_type                     | False    | test                            | String  | Type of suite of tests to run. (values: test, tag, platform)          |
+| openstack_certification_tests                         | False    | self_check,supportable,director | Array   | List of tests to run.                                                 |
+| openstack_certification_tags                          | False    | N/A                             | Array   | List of tags to run.                                                  |
+| openstack_certification_platform                      | False    | N/A                             | Array   | List of platform tests to run. (values: cloud, openstack, hardware)   |
+| openstack_certification_supported_apis_and_extensions | False    | N/A                             | Array   | List of supported APIs and extensions.                                |
 
+## Variables details
 
-## Supported APIs and extensions:
+### Supported Tests
 
-Available options for `supported_apis_and_extensions` are :
+Available options for `openstack_certification_tests` are :
+
+  * `self_check`
+  * `supportable`
+  * `director`
+  * `tempest_config`
+  * `sahara`
+  * `cinder_consistency_groups`
+  * `cinder_volumes`
+  * `manila_share_extend`
+  * `manila_share_managed`
+  * `manila_share_shrink`
+  * `manila_shares`
+  * `manila_snapshot_managed`
+  * `manila_snapshot_mountable`
+  * `manila_snapshot_revert_to_snapshot`
+  * `manila_snapshot_share_from_snapshot`
+  * `manila_snapshots`
+  * `neutron_address_scope`
+  * `neutron_agents`
+  * `neutron_attribute_extensions`
+  * `neutron_availability_zones`
+  * `neutron_dhcp_extra`
+  * `neutron_flavor`
+  * `neutron_gateway_extra`
+  * `neutron_gman`
+  * `neutron_ip_availability`
+  * `neutron_ipv4`
+  * `neutron_ipv6`
+  * `neutron_l2_multi_provider`
+  * `neutron_l3_extra_route`
+  * `neutron_l3_flavors`
+  * `neutron_l3_ha`
+  * `neutron_lbaasv2`
+  * `neutron_metering`
+  * `neutron_mtu`
+  * `neutron_qos`
+  * `neutron_rbac`
+  * `neutron_security_groups`
+  * `neutron_service_types`
+  * `neutron_subnet_allocation`
+  * `neutron_subnet_default_pool`
+  * `neutron_tags`
+  * `neutron_trunk`
+
+### Supported Tags
+
+Available options for `openstack_certification_tags` are :
+
+  * `osqa`
+  * `portable`
+  * `certification`
+  * `realtime`
+  * `manila`
+  * `network`
+  * `virtualization`
+  * `wlan`
+  * `cinder`
+  * `usb`
+  * `neutron`
+
+### Supported Platforms
+
+Available options for `openstack_certification_platform` are :
+
+  * `cloud`
+  * `hardware`
+  * `openstack`
+
+### Supported APIs and extensions:
+
+Available options for `openstack_certification_supported_apis_and_extensions` are :
 
   * `qos`
   * `clone`
@@ -92,3 +169,13 @@ Available options for `supported_apis_and_extensions` are :
   roles:
     - openstack-certification
 ```
+
+
+## License
+
+Apache 2.0
+
+
+## Author Information
+
+Distributed-CI Team  <distributed-ci@redhat.com>
