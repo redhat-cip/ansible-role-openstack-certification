@@ -42,7 +42,7 @@
 
 - name: Retrieve certification test resulsts
   become: True
-  shell: rhcert-ci print --format {{ openstack_certification_output_format }} | tee {{ openstack_certification_output_filename }}
+  shell: rhcert-ci print --format {{ openstack_certification_output_format }} | tail -n +2 | tee {{ openstack_certification_output_filename }}
 
 - name: Download result file
   become: True
