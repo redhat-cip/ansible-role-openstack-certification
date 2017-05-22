@@ -37,7 +37,7 @@
   become: True
   shell: >
     rhcert-ci clean all &&
-    rhcert-ci run {{ '--test %s' % " --test ".join(openstack_certification_tests) }}
+    rhcert-ci run {{ "--%s " % openstack_certification_test_type }}{% if openstack_certification_test_type == "tag" %}{{" --tag ".join(openstack_certification_tags)}}{% elif openstack_certification_test_type == "platform" %}{{" --tag ".join(openstack_certification_platform)}}{% else %}{{" --test ".join(openstack_certification_tests)}}{% endif %}
   ignore_errors: True
 
 - name: Retrieve certification test resulsts
