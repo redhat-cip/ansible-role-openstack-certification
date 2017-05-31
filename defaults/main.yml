@@ -28,7 +28,7 @@ openstack_certification_tests:
   - self_check
   - supportable
   - director
-#  - tempest_config
+  - tempest_config
 #  - sahara
 #  - cinder_consistency_groups
 #  - cinder_volumes
