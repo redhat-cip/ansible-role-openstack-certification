@@ -4,5 +4,4 @@
   "admin_password": "{{ admin_password.stdout }}",
   "admin_tenant_name": "{{ admin_tenant_name.stdout }}",
   "supported_apis_and_extensions": [{{ '"%s"' % '","'.join(openstack_certification_supported_apis_and_extensions) }}],
-  "undercloud_stackrc": "{{ undercloud_stackrc | default('/home/stack/stackrc') }}"
 }
