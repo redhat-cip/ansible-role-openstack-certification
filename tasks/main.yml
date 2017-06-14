@@ -44,9 +44,22 @@
   become: True
   shell: rhcert-ci print --format {{ openstack_certification_output_format }} | tail -n +2 | tee {{ openstack_certification_output_filename }}
 
-- name: Download result file
+- name: Download output file
   become: True
   fetch:
     src: '{{ openstack_certification_output_filename }}'
     dest: "{{ lookup('env', 'PWD') }}/{{ openstack_certification_output_filename }}"
     flat: yes
+
+- name: Compress results file
+  become: True
+  shell: 'gzip -c /var/rhcert/results.xml > results.xml.gz'
+  when: openstack_certification_results_download|bool
+
+- name: Download results file
+  become: True
+  fetch:
+    src: 'results.xml.gz'
+    dest: "{{ lookup('env', 'PWD') }}/results.xml.gz"
+    flat: yes
+  when: openstack_certification_results_download|bool

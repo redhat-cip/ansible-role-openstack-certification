@@ -12,6 +12,9 @@ openstack_certification_output_format: text
 #
 openstack_certification_output_filename: cert.txt
 
+# Enable downloading the results file (/var/rhcert/results.xml)
+#
+openstack_certification_results_download: false
 
 # Test type that should be passed to rhcert-ci run command
 # Allowed options are:
