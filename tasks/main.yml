@@ -23,9 +23,13 @@
   shell: "source /home/stack/overcloudrc && echo \"$OS_PASSWORD\""
   register: admin_password
 
-- name: Register keystone_auth_url
+- name: Register admin_tenant_name
   shell: "source /home/stack/overcloudrc && echo \"$OS_TENANT_NAME\""
   register: admin_tenant_name
+
+- name: Register admin_project_name
+  shell: "source /home/stack/overcloudrc && echo \"$OS_PROJECT_NAME\""
+  register: admin_project_name
 
 - name: Create the test_config.json file
   become: True
