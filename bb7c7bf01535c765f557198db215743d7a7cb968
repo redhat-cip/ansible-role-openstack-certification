@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_22736e82",
+        "filename": "tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 115
+      },
+      "writtenOn": "2017-06-15T10:37:57Z",
+      "side": 1,
+      "message": "nit (design): since those two commands are logically grouped, what about? :\n\n  - block:\n    - archive:\n    - fetch:\n    when: openstack_certification_results_download|bool",
+      "revId": "bb7c7bf01535c765f557198db215743d7a7cb968",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_82635ab1",
+        "filename": "tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 115
+      },
+      "writtenOn": "2017-06-15T10:37:57Z",
+      "side": 1,
+      "message": "nit: EPEL ships Ansible 2.3 with the archive module (http://docs.ansible.com/ansible/archive_module.html) it might be interesting to reuse it here.",
+      "revId": "bb7c7bf01535c765f557198db215743d7a7cb968",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    }
+  ]
+}
