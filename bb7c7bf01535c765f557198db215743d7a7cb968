@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "baa041b7_e2aa2619",
+        "filename": "tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 56
+      },
+      "writtenOn": "2017-06-15T21:14:57Z",
+      "side": 1,
+      "message": "I will update the review with this change",
+      "parentUuid": "baa041b7_22736e82",
+      "revId": "bb7c7bf01535c765f557198db215743d7a7cb968",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "baa041b7_82635ab1",
         "filename": "tasks/main.yml",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2017-06-15T10:37:57Z",
       "side": 1,
       "message": "nit: EPEL ships Ansible 2.3 with the archive module (http://docs.ansible.com/ansible/archive_module.html) it might be interesting to reuse it here.",
+      "revId": "bb7c7bf01535c765f557198db215743d7a7cb968",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_02ae2a2e",
+        "filename": "tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 56
+      },
+      "writtenOn": "2017-06-15T21:14:57Z",
+      "side": 1,
+      "message": "That\u0027s what I wanted to do but on a second thought, the ansible package coming in RHOSP is only 2.2",
+      "parentUuid": "baa041b7_82635ab1",
       "revId": "bb7c7bf01535c765f557198db215743d7a7cb968",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
       "unresolved": false
