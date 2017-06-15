@@ -69,6 +69,24 @@
       "revId": "bb7c7bf01535c765f557198db215743d7a7cb968",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_85eec420",
+        "filename": "tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 30
+      },
+      "writtenOn": "2017-06-15T23:17:41Z",
+      "side": 1,
+      "message": "Agreed with Dimitri. I would prefer we preserve the 2.2 compat for a couple of additional weeks.",
+      "parentUuid": "baa041b7_02ae2a2e",
+      "revId": "bb7c7bf01535c765f557198db215743d7a7cb968",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
     }
   ]
 }
