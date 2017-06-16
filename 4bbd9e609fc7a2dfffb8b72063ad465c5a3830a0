@@ -1,0 +1,9 @@
+Code-Review+2: Gonéri Le Bouder <goneri@lebouder.net>
+Code-Review+2: Yanis Guenane <yguenane@gmail.com>
+Workflow+1: Yanis Guenane <yguenane@gmail.com>
+Verified+2: Jenkins CI <jenkins@softwarefactory-project.io>
+Submitted-by: Jenkins CI <jenkins@softwarefactory-project.io>
+Submitted-at: Fri, 16 Jun 2017 13:20:04 +0000
+Reviewed-on: https://softwarefactory-project.io/r/8550
+Project: ansible-role-openstack-certification
+Branch: refs/heads/master
