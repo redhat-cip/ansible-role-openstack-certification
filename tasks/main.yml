@@ -11,6 +11,17 @@
     - redhat-certification
     - redhat-certification-openstack
 
+- name: Test if rhosp-release is available
+  command: yum info rhosp-release
+  register: rhosp_exists
+  failed_when: False
+
+- name: Install rhosp-release
+  yum:
+    name: rhosp-release
+    state: latest
+  when: "rhosp_exists.rc == 0"
+
 - name: Register keystone_auth_url
   shell: "source /home/stack/overcloudrc && echo \"$OS_AUTH_URL\""
   register: keystone_auth_url
