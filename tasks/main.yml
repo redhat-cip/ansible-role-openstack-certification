@@ -8,6 +8,7 @@
   package:
     name: '{{ item }}'
   with_items:
+    - rhosp-release
     - redhat-certification
     - redhat-certification-openstack
 
