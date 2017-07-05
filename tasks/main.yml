@@ -67,3 +67,10 @@
       dest: "{{ lookup('env', 'PWD') }}/results.xml.gz"
       flat: yes
   when: openstack_certification_results_download|bool
+
+- name: Tempest cleanup
+  become: True
+  file:
+    path: /tmp/tempest-lock
+    state: absent
+  when: "'tempest_config' in openstack_certification_tests"
