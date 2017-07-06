@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9aa53dc9_cdbac86e",
+        "filename": "tasks/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 56
+      },
+      "writtenOn": "2017-07-06T19:33:00Z",
+      "side": 1,
+      "message": "I\u0027m wondering if we could use the ansible yum module with the list param for that.",
+      "range": {
+        "startLine": 15,
+        "startChar": 2,
+        "endLine": 15,
+        "endChar": 33
+      },
+      "revId": "977a38c877e4f7cd1938d49b87eabd4017a4f027",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    }
+  ]
+}
