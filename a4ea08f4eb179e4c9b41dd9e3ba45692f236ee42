@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9aa53dc9_b11d9e11",
+        "filename": "tasks/main.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 30
+      },
+      "writtenOn": "2017-07-07T14:14:59Z",
+      "side": 1,
+      "message": "I did that on purpose, there is no list parameter with \u0027package\u0027.",
+      "parentUuid": "9aa53dc9_d141423b",
+      "revId": "a4ea08f4eb179e4c9b41dd9e3ba45692f236ee42",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9aa53dc9_b13ebeb6",
         "filename": "tasks/main.yml",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2017-07-07T08:29:29Z",
       "side": 1,
       "message": "ditto",
+      "revId": "a4ea08f4eb179e4c9b41dd9e3ba45692f236ee42",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9aa53dc9_911a9a16",
+        "filename": "tasks/main.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 30
+      },
+      "writtenOn": "2017-07-07T14:14:59Z",
+      "side": 1,
+      "message": "I\u0027m not sure why we should use package instead of yum since we only support RHEL7.",
+      "parentUuid": "9aa53dc9_b13ebeb6",
       "revId": "a4ea08f4eb179e4c9b41dd9e3ba45692f236ee42",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
       "unresolved": false
