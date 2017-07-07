@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "9aa53dc9_f1b8c6e7",
+        "filename": "tasks/main.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 30
+      },
+      "writtenOn": "2017-07-07T14:43:03Z",
+      "side": 1,
+      "message": "Just compare the options:\n\nhttp://docs.ansible.com/ansible/yum_module.html\nhttp://docs.ansible.com/ansible/package_module.html",
+      "parentUuid": "9aa53dc9_f1e1e6ff",
+      "revId": "a4ea08f4eb179e4c9b41dd9e3ba45692f236ee42",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9aa53dc9_b13ebeb6",
         "filename": "tasks/main.yml",
         "patchSetId": 3
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "Because it is a best practice to use package rather than specify yum, that\u0027s one. Two, this role already use package module for package management, so using package will keep it consistent with what already in place.",
       "parentUuid": "9aa53dc9_911a9a16",
+      "revId": "a4ea08f4eb179e4c9b41dd9e3ba45692f236ee42",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9aa53dc9_d1cee282",
+        "filename": "tasks/main.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 30
+      },
+      "writtenOn": "2017-07-07T14:43:03Z",
+      "side": 1,
+      "message": "ok.",
+      "parentUuid": "9aa53dc9_d1e70211",
       "revId": "a4ea08f4eb179e4c9b41dd9e3ba45692f236ee42",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
       "unresolved": false
