@@ -11,6 +11,17 @@
     - redhat-certification
     - redhat-certification-openstack
 
+- name: Test if rhosp-release is available (OSP10 and above)
+  package:
+    list: rhosp-release
+  register: rhosp_status
+
+- name: Install rhosp-release
+  package:
+    name: rhosp-release
+    state: latest
+  when: rhosp_status.results|length > 1
+
 - name: Register keystone_auth_url
   shell: "source /home/stack/overcloudrc && echo \"$OS_AUTH_URL\""
   register: keystone_auth_url
