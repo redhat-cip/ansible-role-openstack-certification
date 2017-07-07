@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9aa53dc9_d141423b",
+        "filename": "tasks/main.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 115
+      },
+      "writtenOn": "2017-07-07T08:29:29Z",
+      "side": 1,
+      "message": "s/yum/package as above",
+      "revId": "a4ea08f4eb179e4c9b41dd9e3ba45692f236ee42",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9aa53dc9_b13ebeb6",
+        "filename": "tasks/main.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 115
+      },
+      "writtenOn": "2017-07-07T08:29:29Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "a4ea08f4eb179e4c9b41dd9e3ba45692f236ee42",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    }
+  ]
+}
