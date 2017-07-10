@@ -69,7 +69,10 @@
 - block:
   - name: Compress results file
     become: True
-    shell: 'gzip -c /var/rhcert/results.xml > results.xml.gz'
+    archive:
+      path: /var/rhcert/results.xml
+      dest: /home/stack/results.xml.gz
+      format: gz
 
   - name: Download results file
     become: True
