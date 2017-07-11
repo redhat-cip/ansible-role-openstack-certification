@@ -154,3 +154,6 @@ openstack_certification_supported_apis_and_extensions:
   - node-group-templates
   - data-sources
   - plugins
+
+openstack_certification_tempest_conf_path: /home/stack/tempest/etc/tempest.conf
+openstack_certification_tempest_conf_path_is_remote: Yes

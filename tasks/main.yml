@@ -48,6 +48,13 @@
     src: test_config.json
     dest: /etc/redhat-certification-openstack/test_config.json
 
+- name: copy the tempest configuration file
+  become: True
+  copy:
+    src: '{{ openstack_certification_tempest_conf_path }}'
+    dest: /etc/redhat-certification-openstack
+    remote_src: '{{ openstack_certification_tempest_conf_path_is_remote|bool }}'
+
 - name: Run certification test suite
   become: True
   shell: >
