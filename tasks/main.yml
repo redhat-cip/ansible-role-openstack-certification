@@ -51,8 +51,16 @@
 - name: Run certification test suite
   become: True
   shell: >
-    rhcert-ci clean all &&
-    rhcert-ci run {{ "--%s " % openstack_certification_test_type }}{% if openstack_certification_test_type == "tag" %}{{" --tag ".join(openstack_certification_tags)}}{% elif openstack_certification_test_type == "platform" %}{{" --tag ".join(openstack_certification_platform)}}{% else %}{{" --test ".join(openstack_certification_tests)}}{% endif %}
+    set -eux
+    rhcert-ci clean all
+    {% if openstack_certification_test_type == "tag" %}
+    args={{" --tag ".join(openstack_certification_tags)}}
+    {% elif openstack_certification_test_type == "platform" %}
+    args={{" --tag ".join(openstack_certification_platform)}}
+    {% elif openstack_certification_test_type == "test" %}
+    args={{" --test ".join(openstack_certification_tests)}}
+    {% endif %}
+    rhcert-ci run {{ "--%s " % openstack_certification_test_type }} $args
   ignore_errors: True
 
 - name: Retrieve certification test resulsts
