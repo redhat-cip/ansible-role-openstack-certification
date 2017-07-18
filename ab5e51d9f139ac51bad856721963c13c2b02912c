@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9aa53dc9_6b7effaf",
+        "filename": "defaults/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 56
+      },
+      "writtenOn": "2017-07-18T18:21:13Z",
+      "side": 1,
+      "message": "I think this one should be set to true by default to avoid an undefined variable.",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 58
+      },
+      "revId": "ab5e51d9f139ac51bad856721963c13c2b02912c",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    }
+  ]
+}
