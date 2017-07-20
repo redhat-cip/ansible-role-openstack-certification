@@ -17,6 +17,10 @@ openstack_certification_output_filename: cert.txt
 #
 openstack_certification_results_download: false
 
+# Loal directory where the files will be stored
+#
+openstack_certification_dest_dir: "{{ lookup('env', 'PWD') }}"
+
 # Test type that should be passed to rhcert-ci run command
 # Allowed options are:
 #   - test (default)
