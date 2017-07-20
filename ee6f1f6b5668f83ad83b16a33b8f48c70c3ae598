@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5aa745d1_bdaa1f84",
+        "filename": "tasks/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 56
+      },
+      "writtenOn": "2017-07-20T20:46:49Z",
+      "side": 1,
+      "message": "honestly I don\u0027t see why it will be simpler than before.\nAlso your task is not working at all since you remove the \u0026\u0026 and have multiple lines. It will result with a single command \u0027set -eux rhcert-ci clean all rhcert-ci run...\u0027 so only the set command will be executed.\nIf you want to use multi line you will have to change \u003e by |",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 72
+      },
+      "revId": "ee6f1f6b5668f83ad83b16a33b8f48c70c3ae598",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    }
+  ]
+}
