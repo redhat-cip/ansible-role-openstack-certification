@@ -79,14 +79,14 @@
     become: True
     archive:
       path: /var/rhcert/results.xml
-      dest: /home/stack/results.xml.gz
+      dest: /home/stack/certification.xml.gz
       format: gz
 
   - name: Download results file
     become: True
     fetch:
-      src: 'results.xml.gz'
-      dest: "{{ lookup('env', 'PWD') }}/results.xml.gz"
+      src: 'certification.xml.gz'
+      dest: "{{ lookup('env', 'PWD') }}/certification.xml.gz"
       flat: yes
   when: openstack_certification_results_download|bool
 
