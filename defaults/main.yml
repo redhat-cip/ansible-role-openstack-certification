@@ -13,6 +13,7 @@ openstack_certification_output_format: text
 openstack_certification_output_filename: cert.txt
 
 # Enable downloading the results file (/var/rhcert/results.xml)
+# the local file will be called certification.xml.gz.
 #
 openstack_certification_results_download: false
 
