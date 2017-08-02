@@ -1,0 +1,9 @@
+Code-Review+2: Dimitri Savineau <dsavinea@redhat.com>
+Code-Review+2: Yanis Guenane <yguenane@gmail.com>
+Workflow+1: Yanis Guenane <yguenane@gmail.com>
+Verified+2: Jenkins CI <jenkins@softwarefactory-project.io>
+Submitted-by: Jenkins CI <jenkins@softwarefactory-project.io>
+Submitted-at: Wed, 02 Aug 2017 10:18:17 +0000
+Reviewed-on: https://softwarefactory-project.io/r/9015
+Project: ansible-role-openstack-certification
+Branch: refs/heads/master
