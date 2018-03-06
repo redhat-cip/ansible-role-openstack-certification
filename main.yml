@@ -1,0 +1,8 @@
+---
+# This file and plugin.spec are required by Infrared project
+
+- hosts: undercloud
+  remote_user: stack
+  become: yes
+  roles:
+    - ansible-role-openstack-certification
