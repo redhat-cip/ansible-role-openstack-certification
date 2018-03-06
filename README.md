@@ -170,6 +170,26 @@ Available options for `openstack_certification_supported_apis_and_extensions` ar
     - openstack-certification
 ```
 
+## Usage with InfraRed
+
+Run the following steps to run the plugin:
+1. Install infrared and add ansible-role-openstack-certification plugin by
+providing the url to this repo:
+    ```
+    (infrared)$ ir plugin add https://github.com/kopecmartin/ansible-role-openstack-certification.git --src-path infrared_plugin
+    ```
+2. You can verify that the plugin is imported by:
+    ```
+    (infrared)$ ir plugin list
+    ```
+3. From infrared directory symlink roles path:
+    ```
+    $ ln -s $(pwd)/plugins $(pwd)/plugins/ansible-role-openstack-certification/infrared_plugin/roles
+    ```
+4. Run the plugin:
+    ```
+    (infrared)$ ir ansible-role-openstack-certification
+    ```
 
 ## License
 
