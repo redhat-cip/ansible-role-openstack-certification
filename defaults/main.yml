@@ -162,3 +162,7 @@ openstack_certification_supported_apis_and_extensions:
 
 # openstack_certification_tempest_conf_path: /home/stack/tempest/etc/tempest.conf
 openstack_certification_tempest_conf_path_is_remote: Yes
+openstack_certification_enable_rhsm_repo: Yes
+openstack_certification_install_rpms:
+  - redhat-certification
+  - redhat-certification-openstack

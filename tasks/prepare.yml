@@ -1,0 +1,12 @@
+---
+- name: Subscribe to rhel-7-server-cert-rpms
+  become: True
+  shell: subscription-manager repos --enable=rhel-7-server-cert-rpms
+  when: openstack_certification_enable_rhsm_repo
+
+- name: Install Red Hat certification packages
+  become: True
+  package:
+    name: '{{ item }}'
+    state: present
+  with_items: "{{ openstack_certification_install_rpms }}"
