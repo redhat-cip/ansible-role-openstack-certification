@@ -22,6 +22,30 @@
       "revId": "8e69364cdf90351969b7bfaa12ef841b77b4ff27",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba3cc151_bae7a1ab",
+        "filename": "tasks/prepare.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 30
+      },
+      "writtenOn": "2018-03-22T13:26:56Z",
+      "side": 1,
+      "message": "Oh, you\u0027re absolutely right. Let\u0027s fix that.",
+      "parentUuid": "ba3cc151_efcfadb1",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 22
+      },
+      "revId": "8e69364cdf90351969b7bfaa12ef841b77b4ff27",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
     }
   ]
 }
