@@ -21,7 +21,7 @@ subparsers:
                      type: Value
                      help: |
                        Type of suite of tests to run. (values: test, tag, platform).
-                     default: text
+                     default: test
                  openstack_certification_tests:
                      type: Value
                      action: append
@@ -43,3 +43,8 @@ subparsers:
                      action: append
                      help: |
                        List of supported APIs and extensions.
+                 openstack_certification_enable_rhsm_repo:
+                     type: Bool
+                     help: |
+                       When No/False, RHSM registration will be omitted.
+                     default: Yes
