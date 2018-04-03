@@ -75,6 +75,7 @@ openstack_certification_tests:
 #  - neutron_subnet_default_pool
 #  - neutron_tags
 #  - neutron_trunk
+#  - Ironic
 
 
 # If one wants to enable tags rather than test
@@ -92,6 +93,7 @@ openstack_certification_tests:
 #   - cinder
 #   - usb
 #   - neutron
+#   - ironic
 
 
 # If one wants to enable program rather than test
