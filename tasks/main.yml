@@ -48,13 +48,32 @@
     remote_src: '{{ openstack_certification_tempest_conf_path_is_remote|bool }}'
   when: openstack_certification_tempest_conf_path is defined
 
-- name: Run certification test suite
+- name: Run certification test suite with tag argument
   become: True
   shell: >
     set -x
-    yes|rhcert-ci clean all &&
-    rhcert-ci run {{ "--%s " % openstack_certification_test_type }}{% if openstack_certification_test_type == "tag" %}{{" --tag ".join(openstack_certification_tags)}}{% elif openstack_certification_test_type == "platform" %}{{" --tag ".join(openstack_certification_platform)}}{% else %}{{" --test ".join(openstack_certification_tests)}}{% endif %}
+    rhcert-ci clean all && rhcert-ci run --tag {{ item }} && rhcert-ci save
+  with_items: "{{ openstack_certification_tags }}"
   ignore_errors: True
+  when: openstack_certification_test_type == "tag"
+
+- name: Run certification test suite with platform argument
+  become: True
+  shell: >
+    set -x
+    rhcert-ci clean all && rhcert-ci run --tag {{ item }} && rhcert-ci save
+  with_items: "{{ openstack_certification_platform }}"
+  ignore_errors: True
+  when: openstack_certification_test_type == "platform"
+
+- name: Run certification test suite with test argument
+  become: True
+  shell: >
+    set -x
+    rhcert-ci clean all && rhcert-ci run --tag {{ item }} && rhcert-ci save
+  with_items: "{{ openstack_certification_tests }}"
+  ignore_errors: True
+  when: openstack_certification_test_type != "tag" and openstack_certification_test_type != "platform"
 
 - name: Retrieve certification test results
   become: True
