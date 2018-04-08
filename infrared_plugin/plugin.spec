@@ -23,24 +23,20 @@ subparsers:
                        Type of suite of tests to run. (values: test, tag, platform).
                      default: test
                  openstack_certification_tests:
-                     type: Value
-                     action: append
+                     type: ListValue
                      help: |
                        List of tests to run.
                      default: self_check,supportable,director
                  openstack_certification_tags:
-                     type: Value
-                     action: append
+                     type: ListValue
                      help: |
                        List of tags to run.
                  openstack_certification_platform:
-                     type: Value
-                     action: append
+                     type: ListValue
                      help: |
                        List of platform tests to run. (values: cloud, openstack, hardware).
                  openstack_certification_supported_apis_and_extensions:
-                     type: Value
-                     action: append
+                     type: ListValue
                      help: |
                        List of supported APIs and extensions.
                  openstack_certification_enable_rhsm_repo:
@@ -48,3 +44,7 @@ subparsers:
                      help: |
                        When No/False, RHSM registration will be omitted.
                      default: Yes
+                 repo_file:
+                     type: Value
+                     help: |
+                       Path to a repo file, which will be copied to the host.

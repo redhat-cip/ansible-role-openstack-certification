@@ -6,3 +6,49 @@
   become: yes
   roles:
     - ansible-role-openstack-certification
+
+  pre_tasks:
+    - name: Set openstack_certification_output_format
+      set_fact:
+        openstack_certification_output_format: "{{ test.openstack_certification_output_format }}"
+      when: test.openstack_certification_output_format
+
+    - name: Set openstack_certification_output_filename
+      set_fact:
+        openstack_certification_output_filename: "{{ test.openstack_certification_output_filename }}"
+      when: test.openstack_certification_output_filename
+
+    - name: Set openstack_certification_test_type
+      set_fact:
+        openstack_certification_test_type: "{{ test.openstack_certification_test_type }}"
+      when: test.openstack_certification_test_type
+
+    - name: Set openstack_certification_tests
+      set_fact:
+        openstack_certification_tests: "{{ test.openstack_certification_tests }}"
+      when: test.openstack_certification_tests
+
+    - name: Set openstack_certification_tags
+      set_fact:
+        openstack_certification_tags: "{{ test.openstack_certification_tags }}"
+      when: test.openstack_certification_tags is defined
+
+    - name: Set openstack_certification_platform
+      set_fact:
+        openstack_certification_platform: "{{ test.openstack_certification_platform }}"
+      when: test.openstack_certification_platform is defined
+
+    - name: Set openstack_certification_supported_apis_and_extensions
+      set_fact:
+        openstack_certification_supported_apis_and_extensions: "{{ test.openstack_certification_supported_apis_and_extensions }}"
+      when: test.openstack_certification_supported_apis_and_extensions is defined
+
+    - name: Set openstack_certification_enable_rhsm_repo
+      set_fact:
+        openstack_certification_enable_rhsm_repo: false
+      when: not test.openstack_certification_enable_rhsm_repo
+
+    - name: Set repo_file
+      set_fact:
+        repo_file: "{{ test.repo_file }}"
+      when: test.repo_file is defined
