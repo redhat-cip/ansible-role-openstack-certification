@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a43c5e1_a6b54c7f",
+        "filename": "tasks/prepare.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 115
+      },
+      "writtenOn": "2018-04-09T09:09:59Z",
+      "side": 1,
+      "message": "Thanks for the update. Note: you\u0027re missing the \u0027_\u0027 between repo and file :)",
+      "revId": "4302409726e0a337e4ea7035f9edd1db5946bf90",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    }
+  ]
+}
