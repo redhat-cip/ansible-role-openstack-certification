@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a43c5e1_a6e78cab",
+        "filename": "tasks/prepare.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 115
+      },
+      "writtenOn": "2018-04-09T08:53:06Z",
+      "side": 1,
+      "message": "Could you rename repo_file by openstack_certification_repo file?\n\nAlso why not doing it when: openstack_certification_repo_file is defined ?",
+      "revId": "726e7cdf6abab7d045fc6428bace6cf0b25f994d",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    }
+  ]
+}
