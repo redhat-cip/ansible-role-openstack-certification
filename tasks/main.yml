@@ -52,7 +52,8 @@
   become: True
   shell: >
     set -x
-    rhcert-ci clean all && rhcert-ci run --tag {{" --tag ".join(openstack_certification_tags)}} && rhcert-ci save
+    rhcert-ci clean all && rhcert-ci run --tag {{ item }} && rhcert-ci save
+  with_items: "{{ openstack_certification_tags }}"
   ignore_errors: True
   when: openstack_certification_test_type == "tag"
 
@@ -60,7 +61,8 @@
   become: True
   shell: >
     set -x
-    rhcert-ci clean all && rhcert-ci run --test {{" --test ".join(openstack_certification_platform)}} && rhcert-ci save
+    rhcert-ci clean all && rhcert-ci run --tag {{ item }} && rhcert-ci save
+  with_items: "{{ openstack_certification_platform }}"
   ignore_errors: True
   when: openstack_certification_test_type == "platform"
 
