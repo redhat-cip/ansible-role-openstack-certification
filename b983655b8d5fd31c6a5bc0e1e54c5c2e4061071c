@@ -1,0 +1,9 @@
+Code-Review+1: User anshulbehl <anshulbehl.19@gmail.com>
+Code-Review+2: Gonéri Le Bouder <goneri@lebouder.net>
+Workflow+1: Gonéri Le Bouder <goneri@lebouder.net>
+Verified+2: Zuul CI <zuul@softwarefactory-project.io>
+Submitted-by: Zuul CI <zuul@softwarefactory-project.io>
+Submitted-at: Tue, 24 Apr 2018 15:43:20 +0000
+Reviewed-on: https://softwarefactory-project.io/r/12040
+Project: ansible-role-openstack-certification
+Branch: refs/heads/master
