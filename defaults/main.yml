@@ -168,3 +168,7 @@ openstack_certification_enable_rhsm_repo: Yes
 openstack_certification_install_rpms:
   - redhat-certification
   - redhat-certification-openstack
+
+# Address of the overcloud node (compute/controller)
+# on which you want to run the director test
+openstack_certification_overcloud_node_ip: ""
