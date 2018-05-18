@@ -1,0 +1,86 @@
+---
+- name: Bring up docker containers
+  hosts: localhost
+  gather_facts: false
+  vars:
+    inventory:
+      - name: openstack_certification_rhel7_osp10
+        image: "registry.access.redhat.com/rhel:latest"
+      - name: openstack_certification_rhel7_osp12
+        image: "registry.access.redhat.com/rhel:latest"
+      - name: openstack_certification_rhel7_osp13
+        image: "registry.access.redhat.com/rhel:latest"
+    provision_docker_install_packages: False
+  roles:
+    - role: provision_docker
+      provision_docker_inventory: "{{ inventory }}"
+
+
+- name: Prepare the yum configuration
+  hosts: openstack_certification_rhel7_osp10
+  tasks:
+  - name: Configure yum for OSP10
+    copy:
+      src: rhos_osp10.repo
+      dest: '/etc/yum.repos.d/rhos_osp10.repo'
+
+- name: Prepare the yum configuration
+  hosts: openstack_certification_rhel7_osp12
+  tasks:
+  - name: Configure yum for OSP12
+    copy:
+      src: rhos_osp12.repo
+      dest: '/etc/yum.repos.d/rhos_osp12.repo'
+
+- name: Prepare the yum configuration
+  hosts: openstack_certification_rhel7_osp13
+  tasks:
+  - name: Configure yum for OSP13
+    copy:
+      src: rhos_osp13.repo
+      dest: '/etc/yum.repos.d/rhos_osp13.repo'
+
+- name: Prepare the yum configuration
+  hosts: docker_containers
+  tasks:
+  - name: Configure yum
+    copy:
+      src: rhel.repo
+      dest: '/etc/yum.repos.d/rhel.repo'
+  - name: Push a dummy overcloudrc file
+    copy:
+      src: overcloudrc
+      dest: '/home/stack/'
+  - name: Pull the tempest packages
+    package:
+      name: openstack-tempest-all
+      state: present
+  - name: Create the redhat-certification-openstack directory
+    file:
+      path: /etc/redhat-certification-openstack
+      state: directory
+  - name: Prepare a dummy tempest.conf
+    copy:
+      content: '#empty'
+      dest: /etc/redhat-certification-openstack/tempest.conf
+
+- name: Run tests on containerized environments
+  hosts: docker_containers
+  vars:
+    openstack_certification_test_type: tag
+    openstack_certification_tags: ['cinder', 'baremetal']
+    openstack_certification_enable_rhsm_repo: False
+    openstack_certification_repo_file: rhcert.repo
+    openstack_certification_results_download: True
+    openstack_certification_dest_dir: '{{playbook_dir}}'
+    openstack_certification_result_file_name: 'certification-{{ ansible_host }}.xml.gz'
+  roles:
+  - role: openstack-certification
+
+- name: Check the content of the certification.xml.gz
+  hosts: localhost
+  tasks:
+  - name: Validate we got a XML file
+    shell: |
+      zcat {{ playbook_dir }}/certification-{{ item }}.xml.gz|grep '/certification-test'
+    with_inventory_hostnames: ['docker_containers']

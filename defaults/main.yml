@@ -168,6 +168,10 @@ openstack_certification_enable_rhsm_repo: Yes
 openstack_certification_install_rpms:
   - redhat-certification
   - redhat-certification-openstack
+  # policycoreutils is part of the base @System and rhcert uses its sestatus
+  # command. policycoreutils is not installed in rhel7 Docker image so we
+  # ensure the package is present to pass the tests.
+  - policycoreutils
 
 # Address of the overcloud node (compute/controller)
 # on which you want to run the director test
