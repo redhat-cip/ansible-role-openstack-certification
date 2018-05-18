@@ -1,0 +1,31 @@
+---
+- name: Bring up docker containers
+  hosts: localhost
+  gather_facts: false
+  vars:
+    inventory:
+      - name: openstack_certification_rhel7
+        image: "registry.access.redhat.com/rhel:latest"
+  roles:
+    - role: provision_docker
+      provision_docker_inventory: "{{ inventory }}"
+
+
+- name: Prepare the yum configuration
+  hosts: docker_containers
+  tasks:
+  - copy:
+      src: rhel.repo
+      dest: '/etc/yum.repos.d/rhel.repo'
+  - copy:
+      src: overcloudrc
+      dest: '/home/stack/'
+
+
+- name: Run tests on containerized environments
+  hosts: docker_containers
+  vars:
+    openstack_certification_enable_rhsm_repo: False
+    openstack_certification_repo_file: rhcert.repo
+  roles:
+  - role: openstack-certification 
