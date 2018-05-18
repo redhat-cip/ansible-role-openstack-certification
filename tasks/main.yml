@@ -96,8 +96,8 @@
   - name: Download results file
     become: True
     fetch:
-      src: 'certification.xml.gz'
-      dest: "{{ openstack_certification_dest_dir }}/certification.xml.gz"
+      src: '/home/stack/certification.xml.gz'
+      dest: "{{ openstack_certification_dest_dir }}/{{ openstack_certification_result_file_name }}"
       flat: yes
   when: openstack_certification_results_download|bool
 

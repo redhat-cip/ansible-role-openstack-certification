@@ -1,0 +1,7 @@
+[rhcert-dev-el7]
+name=rhcert-dev-el7
+baseurl=http://hwcert-server.khw.lab.eng.bos.redhat.com/packages/devel/RHEL7
+enabled=1
+gpgcheck=0
+skip_if_unavailable=1
+
