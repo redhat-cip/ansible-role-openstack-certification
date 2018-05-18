@@ -1,0 +1,17 @@
+[rhel-7-server-rpms]
+name=rhel-7-server-rpms
+baseurl=http://pulp.dist.stage.ext.phx2.redhat.com/content/dist/rhel/server/7/7Server/x86_64/os/
+gpgcheck=0
+enabled=1
+
+[rhel-7-server-optional-rpms]
+name=rhel-7-server-optional-rpms
+baseurl=http://pulp.dist.stage.ext.phx2.redhat.com/content/dist/rhel/server/7/7Server/x86_64/optional/os/
+gpgcheck=0
+enabled=1
+
+[rhel-7-server-extras-rpms]
+name=rhel-7-server-extras-rpms
+baseurl=http://pulp.dist.stage.ext.phx2.redhat.com/content/dist/rhel/server/7/7Server/x86_64/extras/os/
+gpgcheck=0
+enabled=1
