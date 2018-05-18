@@ -1,0 +1,5 @@
+tests/ansible.cfg
+tests/cert.txt
+tests/certification*.xml.gz
+tests/roles/provision_docker/
+tests/test.retry

@@ -1,0 +1,5 @@
+[RH7-RHOS-10.0]
+name=RH7-RHOS-10.0
+baseurl=http://download.devel.redhat.com/rcm-guest/puddles/OpenStack/10.0-RHEL-7/latest/RH7-RHOS-10.0/$basearch/os
+gpgcheck=0
+enabled=1
