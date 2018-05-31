@@ -167,8 +167,17 @@ openstack_certification_tempest_conf_path_is_remote: Yes
 openstack_certification_enable_rhsm_repo: Yes
 openstack_certification_install_rpms:
   - redhat-certification
+  - redhat-certification-baremetal
   - redhat-certification-openstack
 
 # Address of the overcloud node (compute/controller)
 # on which you want to run the director test
 openstack_certification_overcloud_node_ip: ""
+
+# Baremetal certification specific
+openstack_certification_baremetal_driver: pxe_ipmitool
+
+# TripleO files
+openstack_certification_instackenv: /home/stack/instackenv.json
+openstack_certification_stackrc: /home/stack/stackrc
+openstack_certification_overcloudrc: /home/stack/overcloudrc

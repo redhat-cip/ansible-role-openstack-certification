@@ -1,0 +1,5 @@
+{
+  "driver_name": "{{ openstack_certification_baremetal_driver }}",
+  "instackenv_path": "{{ openstack_certification_instackenv }}",
+  "stackrc_path": "{{ openstack_certification_stackrc }}"
+}
