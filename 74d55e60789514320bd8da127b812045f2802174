@@ -46,6 +46,30 @@
       "revId": "74d55e60789514320bd8da127b812045f2802174",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a2fa921_cc0e68e5",
+        "filename": "defaults/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 30
+      },
+      "writtenOn": "2018-05-31T19:57:39Z",
+      "side": 1,
+      "message": "Or we can have a work around to set the value with the driver of the first node of the instackenv.json. :-)",
+      "parentUuid": "7a2fa921_ac93eca2",
+      "range": {
+        "startLine": 178,
+        "startChar": 42,
+        "endLine": 178,
+        "endChar": 54
+      },
+      "revId": "74d55e60789514320bd8da127b812045f2802174",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
     }
   ]
 }
