@@ -4,5 +4,6 @@
   "admin_password": "{{ admin_password.stdout }}",
   "admin_tenant_name": "{{ admin_project_name.stdout if admin_tenant_name.stdout == '' else admin_tenant_name.stdout }}",
   "supported_apis_and_extensions": [{{ '"%s"' % '","'.join(openstack_certification_supported_apis_and_extensions) }}],
-  "overcloud_node_ip": "{{ openstack_certification_overcloud_node_ip }}"
+  "overcloud_node_ip": "{{ openstack_certification_overcloud_node_ip }}",
+  "container_names_to_test": [{% if openstack_certification_container_names|length > 0 %}{{ '"%s"' % '","'.join(openstack_certification_container_names) }}{% endif %}]
 }
