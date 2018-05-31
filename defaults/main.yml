@@ -76,6 +76,7 @@ openstack_certification_tests:
 #  - neutron_tags
 #  - neutron_trunk
 #  - baremetal
+#  - trusted_container
 
 
 # If one wants to enable tags rather than test
@@ -181,3 +182,6 @@ openstack_certification_baremetal_driver: pxe_ipmitool
 openstack_certification_instackenv: /home/stack/instackenv.json
 openstack_certification_stackrc: /home/stack/stackrc
 openstack_certification_overcloudrc: /home/stack/overcloudrc
+
+# Container certification specific
+openstack_certification_container_names: []
