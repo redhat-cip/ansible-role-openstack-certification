@@ -37,7 +37,7 @@
 - name: Create the test_config.json file
   become: True
   template:
-    src: test_config.json
+    src: test_config.json.j2
     dest: /etc/redhat-certification-openstack/test_config.json
 
 - name: Create the baremetal.json file
