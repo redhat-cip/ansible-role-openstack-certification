@@ -12,6 +12,11 @@ subparsers:
                      help: |
                        Output format for rhcert-ci print. (values: text, junit, html).
                      default: text
+                 openstack_certification_results_download:
+                     type: Bool
+                     help: |
+                       Enable downloading the results file (/var/rhcert/results.xml)
+                     default: No
                  openstack_certification_output_filename:
                      type: Value
                      help: |

@@ -13,6 +13,11 @@
         openstack_certification_output_format: "{{ test.openstack_certification_output_format }}"
       when: test.openstack_certification_output_format
 
+    - name: Set openstack_certification_results_download
+      set_fact:
+        openstack_certification_results_download: true
+      when: test.openstack_certification_results_download
+
     - name: Set openstack_certification_output_filename
       set_fact:
         openstack_certification_output_filename: "{{ test.openstack_certification_output_filename }}"

@@ -15,12 +15,16 @@ in details.
 | Variable name                                         | Required | Default                         | Type    | Description                                                           |
 |-------------------------------------------------------|----------|---------------------------------|---------|-----------------------------------------------------------------------|
 | openstack_certification_output_format                 | False    | text                            | String  | Output format for rhcert-ci print. (values: text, junit, html)        |
+| openstack_certification_results_download              | False    | No                              | Bool    | Enable downloading the results file (/var/rhcert/results.xml).        |
 | openstack_certification_output_filename               | False    | cert.txt                        | String  | Output filename for rhcert-ci print                                   |
 | openstack_certification_test_type                     | False    | test                            | String  | Type of suite of tests to run. (values: test, tag, platform)          |
 | openstack_certification_tests                         | False    | self_check,supportable,director | Array   | List of tests to run.                                                 |
 | openstack_certification_tags                          | False    | N/A                             | Array   | List of tags to run.                                                  |
 | openstack_certification_platform                      | False    | N/A                             | Array   | List of platform tests to run. (values: cloud, openstack, hardware)   |
 | openstack_certification_supported_apis_and_extensions | False    | N/A                             | Array   | List of supported APIs and extensions.                                |
+| openstack_certification_enable_rhsm_repo              | False    | Yes                             | Bool    | When No/False, RHSM registration will be omitted.                     |
+| openstack_certification_repo_file                     | False    | N/A                             | String  | Path to a repo file, which will be copied to the host.                |
+| openstack_certification_tempest_conf_path             | False    | N/A                             | String  |  Path to a tempest configuration file.                                |
 
 ## Variables details
 
