@@ -24,7 +24,13 @@ in details.
 | openstack_certification_supported_apis_and_extensions | False    | N/A                             | Array   | List of supported APIs and extensions.                                |
 | openstack_certification_enable_rhsm_repo              | False    | Yes                             | Bool    | When No/False, RHSM registration will be omitted.                     |
 | openstack_certification_repo_file                     | False    | N/A                             | String  | Path to a repo file, which will be copied to the host.                |
-| openstack_certification_tempest_conf_path             | False    | N/A                             | String  |  Path to a tempest configuration file.                                |
+| openstack_certification_tempest_conf_path             | False    | N/A                             | String  | Path to a tempest configuration file.                                 |
+| openstack_certification_overcloud_node_ip             | False    | N/A                             | String  | IP address of a controller/compute node for director test.            |
+| openstack_certification_baremetal_driver              | False    | pxe_ipmitool                    | String  | Ironic driver used for the certification.                             |
+| openstack_certification_instackenv                    | False    | /home/stack/instackenv.json     | String  | Path to the instackenv.json file.                                     |
+| openstack_certification_stackrc                       | False    | /home/stack/stackrc             | String  | Path to the undercloud rc file.                                       |
+| openstack_certification_overcloudrc                   | True     | /home/stack/overcloudrc         | String  | Path to the overcloud rc file.                                        |
+| openstack_certification_container_names               | False    | N/A                             | Array   | List of container images for trusted_container test.                  |
 
 ## Variables details
 
@@ -74,6 +80,8 @@ Available options for `openstack_certification_tests` are :
   * `neutron_subnet_default_pool`
   * `neutron_tags`
   * `neutron_trunk`
+  * `baremetal`
+  * `trusted_container`
 
 ### Supported Tags
 
@@ -90,6 +98,7 @@ Available options for `openstack_certification_tags` are :
   * `cinder`
   * `usb`
   * `neutron`
+  * `baremetal`
 
 ### Supported Platforms
 
