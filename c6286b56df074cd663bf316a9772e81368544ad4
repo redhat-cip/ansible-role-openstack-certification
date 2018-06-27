@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2934fa28_483c58a3",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 505
+      },
+      "writtenOn": "2018-06-27T07:30:50Z",
+      "side": 1,
+      "message": "It does have a default value, it\u0027s empty string \"\".",
+      "range": {
+        "startLine": 28,
+        "startChar": 68,
+        "endLine": 28,
+        "endChar": 73
+      },
+      "revId": "c6286b56df074cd663bf316a9772e81368544ad4",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77fc974b_73af6b38",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 505
+      },
+      "writtenOn": "2018-06-27T07:30:50Z",
+      "side": 1,
+      "message": "This has an empty list as a default value: []",
+      "range": {
+        "startLine": 33,
+        "startChar": 69,
+        "endLine": 33,
+        "endChar": 72
+      },
+      "revId": "c6286b56df074cd663bf316a9772e81368544ad4",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    }
+  ]
+}
