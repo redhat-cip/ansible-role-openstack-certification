@@ -1,0 +1,9 @@
+Code-Review+1: Martin Kopec <xkopec42@gmail.com>
+Code-Review+2: Yanis Guenane
+Workflow+1: Yanis Guenane
+Verified+2: Zuul CI <zuul@softwarefactory-project.io>
+Submitted-by: Zuul CI <zuul@softwarefactory-project.io>
+Submitted-at: Thu, 28 Jun 2018 08:15:13 +0000
+Reviewed-on: https://softwarefactory-project.io/r/12761
+Project: ansible-role-openstack-certification
+Branch: refs/heads/master
