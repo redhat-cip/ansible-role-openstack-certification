@@ -25,7 +25,7 @@ openstack_certification_dest_dir: "{{ lookup('env', 'PWD') }}"
 # Allowed options are:
 #   - test (default)
 #   - tag
-#   - platform
+#   - program
 #
 openstack_certification_test_type: test
 
@@ -100,10 +100,13 @@ openstack_certification_tests:
 # If one wants to enable program rather than test
 # make sure to set openstack_certification_test_type: program
 #
-# openstack_certification_program:
+# openstack_certification_programs:
+#   - baremetal
 #   - cloud
-#   - openstack
+#   - container
 #   - hardware
+#   - openstack
+#   - software
 #
 
 openstack_certification_supported_apis_and_extensions:

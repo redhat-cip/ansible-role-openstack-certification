@@ -25,7 +25,7 @@ subparsers:
                  openstack_certification_test_type:
                      type: Value
                      help: |
-                       Type of suite of tests to run. (values: test, tag, platform).
+                       Type of suite of tests to run. (values: test, tag, program).
                      default: test
                  openstack_certification_tests:
                      type: ListValue
@@ -36,10 +36,10 @@ subparsers:
                      type: ListValue
                      help: |
                        List of tags to run.
-                 openstack_certification_platform:
+                 openstack_certification_programs:
                      type: ListValue
                      help: |
-                       List of platform tests to run. (values: cloud, openstack, hardware).
+                       List of programs to run.
                  openstack_certification_supported_apis_and_extensions:
                      type: ListValue
                      help: |

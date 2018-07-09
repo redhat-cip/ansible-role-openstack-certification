@@ -63,14 +63,14 @@
   ignore_errors: True
   when: openstack_certification_test_type == "tag"
 
-- name: Run certification test suite with platform argument
+- name: Run certification test suite with program argument
   become: True
   shell: >
     set -x
-    rhcert-cli clean all && rhcert-ci run --tag {{ item }} && rhcert-ci save
-  with_items: "{{ openstack_certification_platform }}"
+    rhcert-cli clean all && rhcert-ci run --program {{ item }} && rhcert-ci save
+  with_items: "{{ openstack_certification_programs }}"
   ignore_errors: True
-  when: openstack_certification_test_type == "platform"
+  when: openstack_certification_test_type == "program"
 
 - name: Run certification test suite with test argument
   become: True
@@ -78,7 +78,7 @@
     set -x
     rhcert-cli clean all && rhcert-ci run --test {{" --test ".join(openstack_certification_tests)}} && rhcert-ci save
   ignore_errors: True
-  when: openstack_certification_test_type != "tag" and openstack_certification_test_type != "platform"
+  when: openstack_certification_test_type != "tag" and openstack_certification_test_type != "program"
 
 - name: Retrieve certification test results
   become: True

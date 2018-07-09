@@ -38,10 +38,10 @@
         openstack_certification_tags: "{{ test.openstack_certification_tags }}"
       when: test.openstack_certification_tags is defined
 
-    - name: Set openstack_certification_platform
+    - name: Set openstack_certification_programs
       set_fact:
-        openstack_certification_platform: "{{ test.openstack_certification_platform }}"
-      when: test.openstack_certification_platform is defined
+        openstack_certification_programs: "{{ test.openstack_certification_programs }}"
+      when: test.openstack_certification_programs is defined
 
     - name: Set openstack_certification_supported_apis_and_extensions
       set_fact:
