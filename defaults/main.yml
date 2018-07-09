@@ -82,7 +82,7 @@ openstack_certification_tests:
 # If one wants to enable tags rather than test
 # make sure to set openstack_certification_test_type: tag
 #
-# openstack_certification_tags:
+openstack_certification_tags: []
 #   - osqa
 #   - portable
 #   - certification
@@ -100,7 +100,7 @@ openstack_certification_tests:
 # If one wants to enable program rather than test
 # make sure to set openstack_certification_test_type: program
 #
-# openstack_certification_programs:
+openstack_certification_programs: []
 #   - baremetal
 #   - cloud
 #   - container
@@ -169,10 +169,13 @@ openstack_certification_supported_apis_and_extensions:
 # openstack_certification_tempest_conf_path: /home/stack/tempest/etc/tempest.conf
 openstack_certification_tempest_conf_path_is_remote: Yes
 openstack_certification_enable_rhsm_repo: Yes
-openstack_certification_install_rpms:
-  - redhat-certification
-  - redhat-certification-baremetal
-  - redhat-certification-openstack
+openstack_certification_install_rpms: >-
+  [ 'redhat-certification',
+  {% if 'baremetal' in openstack_certification_tags + openstack_certification_tests + openstack_certification_programs %}
+  'redhat-certification-baremetal' ]
+  {% else %}
+  'redhat-certification-openstack' ]
+  {% endif %}
 
 # Address of the overcloud node (compute/controller)
 # on which you want to run the director test

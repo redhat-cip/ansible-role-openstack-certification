@@ -19,8 +19,8 @@ in details.
 | openstack_certification_output_filename               | False    | cert.txt                        | String  | Output filename for rhcert-ci print                                   |
 | openstack_certification_test_type                     | False    | test                            | String  | Type of suite of tests to run. (values: test, tag, program)           |
 | openstack_certification_tests                         | False    | self_check,supportable,director | Array   | List of tests to run.                                                 |
-| openstack_certification_tags                          | False    | N/A                             | Array   | List of tags to run.                                                  |
-| openstack_certification_programs                      | False    | N/A                             | Array   | List of programs to run.                                              |
+| openstack_certification_tags                          | False    | []                              | Array   | List of tags to run.                                                  |
+| openstack_certification_programs                      | False    | []                              | Array   | List of programs to run.                                              |
 | openstack_certification_supported_apis_and_extensions | False    | N/A                             | Array   | List of supported APIs and extensions.                                |
 | openstack_certification_enable_rhsm_repo              | False    | Yes                             | Bool    | When No/False, RHSM registration will be omitted.                     |
 | openstack_certification_repo_file                     | False    | N/A                             | String  | Path to a repo file, which will be copied to the host.                |

@@ -14,45 +14,52 @@
     state: latest
   when: rhosp_status.results|length >= 1
 
-- name: Register keystone_auth_url
-  shell: "source {{ openstack_certification_overcloudrc }} && echo \"$OS_AUTH_URL\""
-  register: keystone_auth_url
+- name: Combine all certification tags, tests and programs
+  set_fact:
+    all_certification_types: '{{ openstack_certification_tags }} + {{ openstack_certification_tests }} + {{ openstack_certification_programs }}'
 
-- name: Register admin_username
-  shell: "source {{ openstack_certification_overcloudrc }} && echo \"$OS_USERNAME\""
-  register: admin_username
+- block:
+    - name: Register keystone_auth_url
+      shell: "source {{ openstack_certification_overcloudrc }} && echo \"$OS_AUTH_URL\""
+      register: keystone_auth_url
 
-- name: Register admin_password
-  shell: "source {{ openstack_certification_overcloudrc }} && echo \"$OS_PASSWORD\""
-  register: admin_password
+    - name: Register admin_username
+      shell: "source {{ openstack_certification_overcloudrc }} && echo \"$OS_USERNAME\""
+      register: admin_username
 
-- name: Register admin_tenant_name
-  shell: "source {{ openstack_certification_overcloudrc }} && echo \"$OS_TENANT_NAME\""
-  register: admin_tenant_name
+    - name: Register admin_password
+      shell: "source {{ openstack_certification_overcloudrc }} && echo \"$OS_PASSWORD\""
+      register: admin_password
 
-- name: Register admin_project_name
-  shell: "source {{ openstack_certification_overcloudrc }} && echo \"$OS_PROJECT_NAME\""
-  register: admin_project_name
+    - name: Register admin_tenant_name
+      shell: "source {{ openstack_certification_overcloudrc }} && echo \"$OS_TENANT_NAME\""
+      register: admin_tenant_name
 
-- name: Create the test_config.json file
-  become: True
-  template:
-    src: test_config.json.j2
-    dest: /etc/redhat-certification-openstack/test_config.json
+    - name: Register admin_project_name
+      shell: "source {{ openstack_certification_overcloudrc }} && echo \"$OS_PROJECT_NAME\""
+      register: admin_project_name
+
+    - name: Create the test_config.json file
+      become: True
+      template:
+        src: test_config.json.j2
+        dest: /etc/redhat-certification-openstack/test_config.json
+
+    - name: copy the tempest configuration file
+      become: True
+      copy:
+        src: '{{ openstack_certification_tempest_conf_path }}'
+        dest: /etc/redhat-certification-openstack
+        remote_src: '{{ openstack_certification_tempest_conf_path_is_remote|bool }}'
+      when: openstack_certification_tempest_conf_path is defined
+  when: 'baremetal' not in all_certification_types
 
 - name: Create the baremetal.json file
   become: True
   template:
     src: baremetal.json
     dest: /etc/redhat-certification-openstack/baremetal.json
-
-- name: copy the tempest configuration file
-  become: True
-  copy:
-    src: '{{ openstack_certification_tempest_conf_path }}'
-    dest: /etc/redhat-certification-openstack
-    remote_src: '{{ openstack_certification_tempest_conf_path_is_remote|bool }}'
-  when: openstack_certification_tempest_conf_path is defined
+  when: 'baremetal' in all_certification_types
 
 - name: Run certification test suite with tag argument
   become: True
