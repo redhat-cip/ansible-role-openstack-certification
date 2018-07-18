@@ -52,14 +52,14 @@
         dest: /etc/redhat-certification-openstack
         remote_src: '{{ openstack_certification_tempest_conf_path_is_remote|bool }}'
       when: openstack_certification_tempest_conf_path is defined
-  when: 'baremetal' not in all_certification_types
+  when: "'baremetal' not in all_certification_types"
 
 - name: Create the baremetal.json file
   become: True
   template:
     src: baremetal.json
     dest: /etc/redhat-certification-openstack/baremetal.json
-  when: 'baremetal' in all_certification_types
+  when: "'baremetal' in all_certification_types"
 
 - name: Run certification test suite with tag argument
   become: True
