@@ -1,7 +1,7 @@
 Name:       ansible-role-openstack-certification
 Version:    0.0.VERS
 Release:    1%{?dist}
-Summary:    ansible-role-openstack-certification
+Summary:    Ansible role for running the Red Hat Openstack Certification suite.
 License:    ASL 2.0
 URL:        https://github.com/redhat-cip/ansible-role-openstack-certification
 Source0:    ansible-role-openstack-certification-%{version}.tar.gz
