@@ -18,6 +18,5 @@
 - name: Install Red Hat certification packages
   become: True
   package:
-    name: '{{ item }}'
+    name: "{{ openstack_certification_install_rpms }}"
     state: present
-  with_items: "{{ openstack_certification_install_rpms }}"
