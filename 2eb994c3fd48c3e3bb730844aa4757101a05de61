@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3484b3b_3de9d9af",
+        "filename": "tasks/prepare.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 30
+      },
+      "writtenOn": "2018-12-10T21:39:23Z",
+      "side": 1,
+      "message": "Nobody certify OSP9 anymore. You can skip this step.",
+      "revId": "2eb994c3fd48c3e3bb730844aa4757101a05de61",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6c58e311_02fd0e75",
+        "filename": "tasks/run_tests.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 30
+      },
+      "writtenOn": "2018-12-10T21:39:23Z",
+      "side": 1,
+      "message": "The baremetal is a bit special. I think it should still be run from the undercloud.",
+      "revId": "2eb994c3fd48c3e3bb730844aa4757101a05de61",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    }
+  ]
+}
