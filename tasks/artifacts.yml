@@ -1,0 +1,28 @@
+---
+- name: Retrieve certification test results
+  become: True
+  shell: rhcert-ci print --format {{ openstack_certification_output_format }} | tail -n +2 | tee {{ openstack_certification_output_filename }}
+
+- name: Download output file
+  become: True
+  fetch:
+    src: '{{ openstack_certification_output_filename }}'
+    dest: "{{ openstack_certification_dest_dir }}/{{ openstack_certification_output_filename.split('.')[0] }}_{{ ansible_hostname }}.{{ openstack_certification_output_filename.split('.')[1] }}"
+    flat: yes
+
+- block:
+  - name: Compress results file
+    become: True
+    archive:
+      path: /var/rhcert/results.xml
+      dest: "/home/stack/certification_{{ ansible_hostname }}.xml.gz"
+      format: gz
+
+  - name: Download results file
+    become: True
+    fetch:
+      src: 'certification_{{ ansible_hostname }.xml.gz'
+      dest: "{{ openstack_certification_dest_dir }}/certification_{{ ansible_hostname }.xml.gz"
+      flat: yes
+  when: openstack_certification_results_download|bool
+

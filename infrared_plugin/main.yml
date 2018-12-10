@@ -1,7 +1,7 @@
 ---
 # This file and plugin.spec are required by Infrared project
 
-- hosts: undercloud
+- hosts: undercloud,controller,compute
   remote_user: stack
   become: yes
   roles:
@@ -27,21 +27,6 @@
       set_fact:
         openstack_certification_test_type: "{{ test.openstack_certification_test_type }}"
       when: test.openstack_certification_test_type
-
-    - name: Set openstack_certification_tests
-      set_fact:
-        openstack_certification_tests: "{{ test.openstack_certification_tests }}"
-      when: test.openstack_certification_tests
-
-    - name: Set openstack_certification_tags
-      set_fact:
-        openstack_certification_tags: "{{ test.openstack_certification_tags }}"
-      when: test.openstack_certification_tags is defined
-
-    - name: Set openstack_certification_programs
-      set_fact:
-        openstack_certification_programs: "{{ test.openstack_certification_programs }}"
-      when: test.openstack_certification_programs is defined
 
     - name: Set openstack_certification_supported_apis_and_extensions
       set_fact:

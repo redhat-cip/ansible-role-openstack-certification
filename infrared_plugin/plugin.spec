@@ -27,19 +27,6 @@ subparsers:
                      help: |
                        Type of suite of tests to run. (values: test, tag, program).
                      default: test
-                 openstack_certification_tests:
-                     type: ListValue
-                     help: |
-                       List of tests to run.
-                     default: self_check,supportable,director
-                 openstack_certification_tags:
-                     type: ListValue
-                     help: |
-                       List of tags to run.
-                 openstack_certification_programs:
-                     type: ListValue
-                     help: |
-                       List of programs to run.
                  openstack_certification_supported_apis_and_extensions:
                      type: ListValue
                      help: |
