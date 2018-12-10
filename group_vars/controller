@@ -1,0 +1,6 @@
+openstack_certification_tests:
+  - trusted_container
+  - supportable
+  - self_check
+  - sosreport
+
