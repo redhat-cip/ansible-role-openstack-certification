@@ -2,6 +2,57 @@
   "comments": [
     {
       "key": {
+        "uuid": "cdc5f562_9a2c0012",
+        "filename": "defaults/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 30
+      },
+      "writtenOn": "2018-12-10T21:51:09Z",
+      "side": 1,
+      "message": "If (as I understand) we don\u0027t use this key, we should drop it from the configuration.",
+      "revId": "2eb994c3fd48c3e3bb730844aa4757101a05de61",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "32344ab6_7776c687",
+        "filename": "defaults/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 30
+      },
+      "writtenOn": "2018-12-10T21:51:09Z",
+      "side": 1,
+      "message": "I think we also need a openstack_certification_tests_undercloud, at last for the baremetal test.",
+      "revId": "2eb994c3fd48c3e3bb730844aa4757101a05de61",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c6fa50f_8adcfd17",
+        "filename": "tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 30
+      },
+      "writtenOn": "2018-12-10T21:51:09Z",
+      "side": 1,
+      "message": "This part could be in a group_vars but I don\u0027t think we can have such file in a role.",
+      "revId": "2eb994c3fd48c3e3bb730844aa4757101a05de61",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3484b3b_3de9d9af",
         "filename": "tasks/prepare.yml",
         "patchSetId": 1
