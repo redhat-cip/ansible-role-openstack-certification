@@ -34,9 +34,9 @@ openstack_certification_test_type: test
 #
 openstack_certification_tests:
   - self_check
-  - supportable
-  - director
-  - tempest_config
+#  - supportable
+#  - director
+#  - tempest_config
 #  - sahara
 #  - cinder_consistency_groups
 #  - cinder_volumes
@@ -78,6 +78,14 @@ openstack_certification_tests:
 #  - baremetal
 #  - trusted_container
 
+openstack_certification_tests_compute:
+  - self_check
+
+openstack_certification_tests_controller:
+  - trusted_container
+  - supportable
+  - self_check
+  - sosreport
 
 # If one wants to enable tags rather than test
 # make sure to set openstack_certification_test_type: tag

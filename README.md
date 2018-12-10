@@ -173,9 +173,16 @@ Available options for `openstack_certification_supported_apis_and_extensions` ar
 
 ## Example
 
+To run the role from the repository:
+```
+$ git clone https://github.com/redhat-cip/ansible-role-openstack-certification.git
+$ cd ansible-role-openstack-certification
+$ mkdir roles && ln -s $(pwd) roles/openstack-certification
+```
+Then create a `playbook.yaml`:
 ```
 ---
-- hosts: undercloud
+- hosts: all
   remote_user: stack
   become: yes
   vars:
@@ -184,6 +191,31 @@ Available options for `openstack_certification_supported_apis_and_extensions` ar
       - backups
   roles:
     - openstack-certification
+
+```
+Define hosts file:
+```
+$ cat hosts
+[controller]
+<user>@<IP>
+
+[compute]
+<user>@<IP>
+```
+And run it:
+```
+$ ansible-playbook playbook.yaml -i hosts
+```
+If you have more groups defined in your hosts file, you can limit groups which
+the tests are supposed to be executed on by:
+```
+$ ansible-playbook playbook.yaml -i hosts -l controller,compute
+```
+or replace ``all`` in playbook.yaml by list of the groups, for example
+```
+hosts:
+  - compute
+  - controller
 ```
 
 ## Usage with InfraRed

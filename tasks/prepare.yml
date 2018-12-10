@@ -20,3 +20,15 @@
   package:
     name: "{{ openstack_certification_install_rpms }}"
     state: present
+
+- name: Test if rhosp-release is available (OSP10 and above)
+  package:
+    list: rhosp-release
+  register: rhosp_status
+
+- name: Install rhosp-release
+  become: True
+  package:
+    name: rhosp-release
+    state: latest
+  when: rhosp_status.results|length >= 1

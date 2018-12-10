@@ -1,0 +1,12 @@
+---
+- hosts:
+    - controller
+    - compute
+  remote_user: stack
+  become: yes
+  vars:
+    openstack_certification_tempest_conf_path: ./tempest.conf
+    openstack_certification_tempest_conf_path_is_remote: No
+  roles:
+    - openstack-certification
+
