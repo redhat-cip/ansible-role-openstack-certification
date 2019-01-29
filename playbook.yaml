@@ -1,0 +1,28 @@
+---
+- hosts: undercloud
+  remote_user: stack
+  become: yes
+  vars:
+    openstack_certification_uc_tempest_conf: <path>
+    openstack_certification_uc_overcloudrc: <path>
+  tasks:
+    - name: Download overcloudrc to the slave
+      fetch:
+        src: "{{ openstack_certification_uc_overcloudrc }}"
+        dest: /tmp/overcloudrc
+        flat: yes
+      remote_src: yes
+
+    - name: Download tempest.conf to the slave
+      fetch:
+        src: "{{ openstack_certification_uc_tempest_conf }}"
+        dest: /tmp/tempest.conf
+        flat: yes
+      remote_src: yes
+
+- hosts: all
+  remote_user: stack
+  become: yes
+  roles:
+    - openstack-certification
+
