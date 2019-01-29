@@ -29,56 +29,6 @@ openstack_certification_dest_dir: "{{ lookup('env', 'PWD') }}"
 #
 openstack_certification_test_type: test
 
-# If one wants to enable test (default behavior)
-# make sure to set openstack_certification_test_type: test
-#
-openstack_certification_tests:
-  - self_check
-  - supportable
-  - director
-  - tempest_config
-#  - sahara
-#  - cinder_consistency_groups
-#  - cinder_volumes
-#  - manila_share_extend
-#  - manila_share_managed
-#  - manila_share_shrink
-#  - manila_shares
-#  - manila_snapshot_managed
-#  - manila_snapshot_mountable
-#  - manila_snapshot_revert_to_snapshot
-#  - manila_snapshot_share_from_snapshot
-#  - manila_snapshots
-#  - neutron_address_scope
-#  - neutron_agents
-#  - neutron_attribute_extensions
-#  - neutron_availability_zones
-#  - neutron_dhcp_extra
-#  - neutron_flavor
-#  - neutron_gateway_extra
-#  - neutron_gman
-#  - neutron_ip_availability
-#  - neutron_ipv4
-#  - neutron_ipv6
-#  - neutron_l2_multi_provider
-#  - neutron_l3_extra_route
-#  - neutron_l3_flavors
-#  - neutron_l3_ha
-#  - neutron_lbaasv2
-#  - neutron_metering
-#  - neutron_mtu
-#  - neutron_qos
-#  - neutron_rbac
-#  - neutron_security_groups
-#  - neutron_service_types
-#  - neutron_subnet_allocation
-#  - neutron_subnet_default_pool
-#  - neutron_tags
-#  - neutron_trunk
-#  - baremetal
-#  - trusted_container
-
-
 # If one wants to enable tags rather than test
 # make sure to set openstack_certification_test_type: tag
 #
@@ -166,8 +116,7 @@ openstack_certification_supported_apis_and_extensions:
   - data-sources
   - plugins
 
-# openstack_certification_tempest_conf_path: /home/stack/tempest/etc/tempest.conf
-openstack_certification_tempest_conf_path_is_remote: true
+# openstack_certification_uc_tempest_conf: /home/stack/tempest/etc/tempest.conf
 openstack_certification_enable_rhsm_repo: true
 openstack_certification_install_rpms: >-
   [ 'redhat-certification',
@@ -185,9 +134,9 @@ openstack_certification_overcloud_node_ip: ""
 openstack_certification_baremetal_driver: pxe_ipmitool
 
 # TripleO files
-openstack_certification_instackenv: /home/stack/instackenv.json
-openstack_certification_stackrc: /home/stack/stackrc
-openstack_certification_overcloudrc: /home/stack/overcloudrc
+openstack_certification_uc_instackenv: /home/stack/instackenv.json
+openstack_certification_uc_stackrc: /home/stack/stackrc
+openstack_certification_uc_overcloudrc: /home/stack/overcloudrc
 
 # Container certification specific
 openstack_certification_container_names: []
