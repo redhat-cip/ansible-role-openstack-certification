@@ -24,12 +24,12 @@ in details.
 | openstack_certification_supported_apis_and_extensions | False    | N/A                             | Array   | List of supported APIs and extensions.                                |
 | openstack_certification_enable_rhsm_repo              | False    | Yes                             | Bool    | When No/False, RHSM registration will be omitted.                     |
 | openstack_certification_repo_file                     | False    | N/A                             | String  | Path to a repo file, which will be copied to the host.                |
-| openstack_certification_tempest_conf_path             | False    | N/A                             | String  | Path to a tempest configuration file.                                 |
+| openstack_certification_uc_tempest_conf               | True     | N/A                             | String  | Path to a tempest configuration file on undercloud node.              |
 | openstack_certification_overcloud_node_ip             | False    | ""                              | String  | IP address of a controller/compute node for director test.            |
 | openstack_certification_baremetal_driver              | False    | pxe_ipmitool                    | String  | Ironic driver used for the certification.                             |
-| openstack_certification_instackenv                    | False    | /home/stack/instackenv.json     | String  | Path to the instackenv.json file.                                     |
-| openstack_certification_stackrc                       | False    | /home/stack/stackrc             | String  | Path to the undercloud rc file.                                       |
-| openstack_certification_overcloudrc                   | True     | /home/stack/overcloudrc         | String  | Path to the overcloud rc file.                                        |
+| openstack_certification_uc_instackenv                 | False    | /home/stack/instackenv.json     | String  | Path to the instackenv.json file on undercloud.                       |
+| openstack_certification_uc_stackrc                    | False    | /home/stack/stackrc             | String  | Path to the undercloud rc file on undercloud.                         |
+| openstack_certification_uc_overcloudrc                | True     | /home/stack/overcloudrc         | String  | Path to the overcloud rc file on undercloud.                          |
 | openstack_certification_container_names               | False    | []                              | Array   | List of container images for trusted_container test.                  |
 
 ## Variables details
@@ -173,17 +173,38 @@ Available options for `openstack_certification_supported_apis_and_extensions` ar
 
 ## Example
 
+To run the role from the repository:
 ```
----
-- hosts: undercloud
-  remote_user: stack
-  become: yes
-  vars:
-    openstack_certification_supported_apis_and_extensions:
-      - volumes
-      - backups
-  roles:
-    - openstack-certification
+$ git clone https://github.com/redhat-cip/ansible-role-openstack-certification.git
+$ cd ansible-role-openstack-certification
+$ mkdir roles && ln -s $(pwd) roles/openstack-certification
+```
+Then set required variables in the `playbook.yaml` and define hosts file:
+```
+$ cat hosts
+[controller]
+<IP> ansible_user=<user>
+
+[compute]
+<IP> ansible_user=<user>
+
+[undercloud]
+<IP> ansible_user=<user>
+```
+And run it:
+```
+$ ansible-playbook playbook.yaml -i hosts
+```
+If you have more groups defined in your hosts file, you can limit groups which
+the tests are supposed to be executed on by:
+```
+$ ansible-playbook playbook.yaml -i hosts -l controller,compute
+```
+or replace ``all`` in playbook.yaml by list of the groups, for example
+```
+hosts:
+  - compute
+  - controller
 ```
 
 ## Usage with InfraRed
@@ -192,7 +213,7 @@ Run the following steps to run the plugin:
 1. Install infrared and add ansible-role-openstack-certification plugin by
 providing the url to this repo:
     ```
-    (infrared)$ ir plugin add https://github.com/kopecmartin/ansible-role-openstack-certification.git --src-path infrared_plugin
+    (infrared)$ ir plugin add https://github.com/redhat-cip/ansible-role-openstack-certification.git --src-path infrared_plugin
     ```
 2. You can verify that the plugin is imported by:
     ```
@@ -202,7 +223,12 @@ providing the url to this repo:
     ```
     $ ln -s $(pwd)/plugins $(pwd)/plugins/ansible-role-openstack-certification/infrared_plugin/roles
     ```
-4. Run the plugin:
+4. Copy group_vars to infrared workspace:
+    ```
+    $ cp -r plugins/ansible-role-openstack-certification/group_vars/ .workspaces/active/
+    ```
+If you want to change the test set for a node, just group_vars as needed.
+5. Run the plugin:
     ```
     (infrared)$ ir ansible-role-openstack-certification
     ```

@@ -1,12 +1,36 @@
 ---
 # This file and plugin.spec are required by Infrared project
-
 - hosts: undercloud
+  remote_user: stack
+  become: yes
+  pre_tasks:
+    - name: Set openstack_certification_uc_tempest_conf
+      set_fact:
+        openstack_certification_uc_tempest_conf: "{{ test.openstack_certification_uc_tempest_conf }}"
+      when: test.openstack_certification_uc_tempest_conf is defined
+
+    - name: Set openstack_certification_uc_overcloudrc
+      set_fact:
+        openstack_certification_uc_overcloudrc: "{{ test.openstack_certification_uc_overcloudrc }}"
+      when: test.openstack_certification_uc_overcloudrc is defined
+  tasks:
+    - name: Download overcloudrc to the slave
+      fetch:
+        src: "{{ openstack_certification_uc_overcloudrc }}"
+        dest: /tmp/overcloudrc
+        flat: yes
+
+    - name: Download tempest.conf to the slave
+      fetch:
+        src: "{{ openstack_certification_uc_tempest_conf }}"
+        dest: /tmp/tempest.conf
+        flat: yes
+
+- hosts: "{{ test.openstack_nodes }}"
   remote_user: stack
   become: yes
   roles:
     - ansible-role-openstack-certification
-
   pre_tasks:
     - name: Set openstack_certification_output_format
       set_fact:
@@ -28,21 +52,6 @@
         openstack_certification_test_type: "{{ test.openstack_certification_test_type }}"
       when: test.openstack_certification_test_type
 
-    - name: Set openstack_certification_tests
-      set_fact:
-        openstack_certification_tests: "{{ test.openstack_certification_tests }}"
-      when: test.openstack_certification_tests
-
-    - name: Set openstack_certification_tags
-      set_fact:
-        openstack_certification_tags: "{{ test.openstack_certification_tags }}"
-      when: test.openstack_certification_tags is defined
-
-    - name: Set openstack_certification_programs
-      set_fact:
-        openstack_certification_programs: "{{ test.openstack_certification_programs }}"
-      when: test.openstack_certification_programs is defined
-
     - name: Set openstack_certification_supported_apis_and_extensions
       set_fact:
         openstack_certification_supported_apis_and_extensions: "{{ test.openstack_certification_supported_apis_and_extensions }}"
@@ -57,8 +66,3 @@
       set_fact:
         openstack_certification_repo_file: "{{ test.openstack_certification_repo_file }}"
       when: test.openstack_certification_repo_file is defined
-
-    - name: Set openstack_certification_tempest_conf_path
-      set_fact:
-        openstack_certification_tempest_conf_path: "{{ test.openstack_certification_tempest_conf_path }}"
-      when: test.openstack_certification_tempest_conf_path is defined

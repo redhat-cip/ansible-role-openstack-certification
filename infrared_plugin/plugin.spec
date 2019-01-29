@@ -27,19 +27,6 @@ subparsers:
                      help: |
                        Type of suite of tests to run. (values: test, tag, program).
                      default: test
-                 openstack_certification_tests:
-                     type: ListValue
-                     help: |
-                       List of tests to run.
-                     default: self_check,supportable,director
-                 openstack_certification_tags:
-                     type: ListValue
-                     help: |
-                       List of tags to run.
-                 openstack_certification_programs:
-                     type: ListValue
-                     help: |
-                       List of programs to run.
                  openstack_certification_supported_apis_and_extensions:
                      type: ListValue
                      help: |
@@ -53,7 +40,16 @@ subparsers:
                      type: Value
                      help: |
                        Path to a repo file, which will be copied to the host.
-                 openstack_certification_tempest_conf_path:
+                 openstack_certification_uc_tempest_conf:
                      type: Value
                      help: |
                        Path to a tempest configuration file.
+                 openstack_certification_uc_overcloudrc:
+                     type: Value
+                     help: |
+                       Path to overcloud credentials file.
+                 openstack_nodes:
+                     type: Value
+                     help: |
+                       OpenStack nodes the role will be executed on.
+                     default: undercloud,controller
