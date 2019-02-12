@@ -1,0 +1,6 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - import_role:
+        name: ansible-role-openstack-certification

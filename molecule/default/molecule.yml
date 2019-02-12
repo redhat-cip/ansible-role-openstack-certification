@@ -1,0 +1,34 @@
+---
+dependency:
+  name: galaxy
+  enabled: false
+driver:
+  name: docker
+lint:
+  name: yamllint
+platforms:
+  - name: el7
+    image: centos:latest
+    command: /sbin/init
+    capabilities:
+      - SYS_ADMIN
+provisioner:
+  name: ansible
+  connection_options:
+    ansible_user: centos
+  lint:
+    name: ansible-lint
+scenario:
+  name: default
+  test_sequence:
+    - lint
+    - destroy
+    - dependency
+    - syntax
+    - create
+    - prepare
+    - destroy
+verifier:
+  name: testinfra
+  lint:
+    name: flake8
