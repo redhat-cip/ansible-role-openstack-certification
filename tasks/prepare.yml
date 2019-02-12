@@ -1,11 +1,9 @@
 ---
 - name: Subscribe to rhel-7-server-cert-rpms
   become: true
-  shell: subscription-manager repos --enable=rhel-7-server-cert-rpms
-  register: rhsm
-  until: rhsm.rc == 0
-  retries: 5
-  delay: 10
+  rhsm_repository:
+    name: rhel-7-server-cert-rpms
+    state: enabled
   when: openstack_certification_enable_rhsm_repo
 
 - name: Copy an openstack certification repository

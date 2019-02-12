@@ -4,7 +4,7 @@ galaxy_info:
   description: An Ansible role to run the Red Hat OpenStack certification test suite
   company: Red Hat
   license: license (Apache)
-  min_ansible_version: 2.0
+  min_ansible_version: 2.5
   platforms:
     - name: EL
       versions:

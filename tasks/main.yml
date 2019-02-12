@@ -11,7 +11,6 @@
   become: true
   package:
     name: rhosp-release
-    state: latest
   when: rhosp_status.results|length >= 1
 
 - name: Combine all certification tags, tests and programs
@@ -90,6 +89,8 @@
 - name: Retrieve certification test results
   become: true
   shell: rhcert-ci print --format {{ openstack_certification_output_format }} | tail -n +2 | tee {{ openstack_certification_output_filename }}
+  args:
+    creates: '{{ openstack_certification_output_filename }}'
 
 - name: Download output file
   become: true
