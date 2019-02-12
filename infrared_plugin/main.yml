@@ -3,7 +3,7 @@
 
 - hosts: undercloud
   remote_user: stack
-  become: yes
+  become: true
   roles:
     - ansible-role-openstack-certification
 

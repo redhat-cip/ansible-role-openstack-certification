@@ -167,8 +167,8 @@ openstack_certification_supported_apis_and_extensions:
   - plugins
 
 # openstack_certification_tempest_conf_path: /home/stack/tempest/etc/tempest.conf
-openstack_certification_tempest_conf_path_is_remote: Yes
-openstack_certification_enable_rhsm_repo: Yes
+openstack_certification_tempest_conf_path_is_remote: true
+openstack_certification_enable_rhsm_repo: true
 openstack_certification_install_rpms: >-
   [ 'redhat-certification',
   {% if 'baremetal' in openstack_certification_tags + openstack_certification_tests + openstack_certification_programs %}

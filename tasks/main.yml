@@ -8,7 +8,7 @@
   register: rhosp_status
 
 - name: Install rhosp-release
-  become: True
+  become: true
   package:
     name: rhosp-release
     state: latest
@@ -40,13 +40,13 @@
       register: admin_project_name
 
     - name: Create the test_config.json file
-      become: True
+      become: true
       template:
         src: test_config.json.j2
         dest: /etc/redhat-certification-openstack/test_config.json
 
     - name: copy the tempest configuration file
-      become: True
+      become: true
       copy:
         src: '{{ openstack_certification_tempest_conf_path }}'
         dest: /etc/redhat-certification-openstack
@@ -55,67 +55,67 @@
   when: "'baremetal' not in all_certification_types"
 
 - name: Create the baremetal.json file
-  become: True
+  become: true
   template:
     src: baremetal.json
     dest: /etc/redhat-certification-openstack/baremetal.json
   when: "'baremetal' in all_certification_types"
 
 - name: Run certification test suite with tag argument
-  become: True
+  become: true
   shell: >
     set -x
     rhcert-ci clean all && rhcert-ci run --tag {{ item }} && rhcert-ci save
   with_items: "{{ openstack_certification_tags }}"
-  ignore_errors: True
+  ignore_errors: true
   when: openstack_certification_test_type == "tag"
 
 - name: Run certification test suite with program argument
-  become: True
+  become: true
   shell: >
     set -x
     rhcert-ci clean all && rhcert-ci run --program {{ item }} && rhcert-ci save
   with_items: "{{ openstack_certification_programs }}"
-  ignore_errors: True
+  ignore_errors: true
   when: openstack_certification_test_type == "program"
 
 - name: Run certification test suite with test argument
-  become: True
+  become: true
   shell: >
     set -x
     rhcert-ci clean all && rhcert-ci run --test {{" --test ".join(openstack_certification_tests)}} && rhcert-ci save
-  ignore_errors: True
+  ignore_errors: true
   when: openstack_certification_test_type != "tag" and openstack_certification_test_type != "program"
 
 - name: Retrieve certification test results
-  become: True
+  become: true
   shell: rhcert-ci print --format {{ openstack_certification_output_format }} | tail -n +2 | tee {{ openstack_certification_output_filename }}
 
 - name: Download output file
-  become: True
+  become: true
   fetch:
     src: '{{ openstack_certification_output_filename }}'
     dest: "{{ openstack_certification_dest_dir }}/{{ openstack_certification_output_filename }}"
-    flat: yes
+    flat: true
 
 - block:
-  - name: Compress results file
-    become: True
-    archive:
-      path: /var/rhcert/results.xml
-      dest: /home/stack/certification.xml.gz
-      format: gz
+    - name: Compress results file
+      become: true
+      archive:
+        path: /var/rhcert/results.xml
+        dest: /home/stack/certification.xml.gz
+        format: gz
 
-  - name: Download results file
-    become: True
-    fetch:
-      src: 'certification.xml.gz'
-      dest: "{{ openstack_certification_dest_dir }}/certification.xml.gz"
-      flat: yes
+    - name: Download results file
+      become: true
+      fetch:
+        src: 'certification.xml.gz'
+        dest: "{{ openstack_certification_dest_dir }}/certification.xml.gz"
+        flat: true
   when: openstack_certification_results_download|bool
 
 - name: Tempest cleanup
-  become: True
+  become: true
   file:
     path: /tmp/tempest-lock
     state: absent

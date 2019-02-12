@@ -1,6 +1,6 @@
 ---
 - name: Subscribe to rhel-7-server-cert-rpms
-  become: True
+  become: true
   shell: subscription-manager repos --enable=rhel-7-server-cert-rpms
   register: rhsm
   until: rhsm.rc == 0
@@ -9,14 +9,14 @@
   when: openstack_certification_enable_rhsm_repo
 
 - name: Copy an openstack certification repository
-  become: True
+  become: true
   copy:
     src: "{{ openstack_certification_repo_file }}"
     dest: /etc/yum.repos.d/{{ openstack_certification_repo_file | basename }}
   when: openstack_certification_repo_file is defined
 
 - name: Install Red Hat certification packages
-  become: True
+  become: true
   package:
     name: "{{ openstack_certification_install_rpms }}"
     state: present
