@@ -1,0 +1,8 @@
+Code-Review+2: Cédric Lecomte <ced.lecomte@gmail.com>
+Workflow+1: Cédric Lecomte <ced.lecomte@gmail.com>
+Verified+2: Zuul CI <zuul@softwarefactory-project.io>
+Submitted-by: Zuul CI <zuul@softwarefactory-project.io>
+Submitted-at: Fri, 22 Feb 2019 13:11:57 +0000
+Reviewed-on: https://softwarefactory-project.io/r/15009
+Project: ansible-role-openstack-certification
+Branch: refs/heads/master
