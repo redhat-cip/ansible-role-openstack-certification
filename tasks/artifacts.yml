@@ -1,7 +1,9 @@
 ---
 - name: Retrieve certification test results
   become: true
-  shell: rhcert-ci print --format {{ openstack_certification_output_format }} | tail -n +2 | tee {{ openstack_certification_output_filename }}
+  shell: >
+    set -o pipefail
+    rhcert-ci print --format {{ openstack_certification_output_format }} | tail -n +2 | tee {{ openstack_certification_output_filename }}
   args:
     creates: '{{ openstack_certification_output_filename }}'
 
@@ -9,7 +11,8 @@
   become: true
   fetch:
     src: '{{ openstack_certification_output_filename }}'
-    dest: "{{ openstack_certification_dest_dir }}/{{ openstack_certification_output_filename.split('.')[0] }}_{{ ansible_hostname }}.{{ openstack_certification_output_filename.split('.')[1] }}"
+    dest: "{{ openstack_certification_dest_dir }}/{{ openstack_certification_output_filename.split('.')[0] }}_{{ ansible_hostname }}.\
+      {{ openstack_certification_output_filename.split('.')[1] }}"
     flat: true
 
 - block:
