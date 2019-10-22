@@ -11,6 +11,12 @@
     src: /tmp/tempest.conf
     dest: /etc/redhat-certification-openstack/tempest.conf
 
+- name: Copy tempest.conf (Bug 1628403)
+  become: true
+  copy:
+    src: /tmp/tempest.conf
+    dest: /etc/tempest/tempest.conf
+
 - name: Combine all certification tags, tests and programs
   set_fact:
     all_certification_types: '{{ openstack_certification_tags }} + {{ openstack_certification_tests }} + {{ openstack_certification_programs }}'
