@@ -1,0 +1,9 @@
+Code-Review+2: François Charlier <francois.charlier@redhat.com>
+Code-Review+2: Haïkel Guémar <hguemar@fedoraproject.org>
+Workflow+1: François Charlier <francois.charlier@redhat.com>
+Verified+2: Zuul CI <zuul@softwarefactory-project.io>
+Submitted-by: Zuul CI <zuul@softwarefactory-project.io>
+Submitted-at: Wed, 30 Oct 2019 10:56:48 +0000
+Reviewed-on: https://softwarefactory-project.io/r/16868
+Project: ansible-role-openstack-certification
+Branch: refs/heads/master
