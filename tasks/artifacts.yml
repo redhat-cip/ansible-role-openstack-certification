@@ -2,7 +2,7 @@
 - name: Retrieve certification test results
   become: true
   shell: >
-    set -o pipefail
+    set -o pipefail &&
     rhcert-ci print --format {{ openstack_certification_output_format }} | tail -n +2 | tee {{ openstack_certification_output_filename }}
   args:
     creates: '{{ openstack_certification_output_filename }}'
