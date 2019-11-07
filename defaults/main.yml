@@ -118,6 +118,12 @@ openstack_certification_supported_apis_and_extensions:
 
 # openstack_certification_uc_tempest_conf: /home/stack/tempest/etc/tempest.conf
 openstack_certification_enable_rhsm_repo: true
+openstack_certification_rhsm_repo_name: >-
+  {% if ansible_distribution_major_version == "7" %}
+  rhel-7-server-cert-rpms
+  {% elif ansible_distribution_major_version == "8" %}
+  cert-1-for-rhel-8-{{ ansible_architecture }}-rpms
+  {% endif %}
 openstack_certification_install_rpms: >-
   [ 'redhat-certification',
   {% if 'baremetal' in openstack_certification_tags + openstack_certification_tests + openstack_certification_programs %}

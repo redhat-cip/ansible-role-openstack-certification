@@ -1,8 +1,8 @@
 ---
-- name: Subscribe to rhel-7-server-cert-rpms
+- name: Subscribe to the rhsm certification repository
   become: true
   rhsm_repository:
-    name: rhel-7-server-cert-rpms
+    name: "{{ openstack_certification_rhsm_repo_name }}"
     state: enabled
   when: openstack_certification_enable_rhsm_repo
 
