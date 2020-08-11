@@ -3,12 +3,17 @@ dependency:
   name: galaxy
   enabled: false
 driver:
-  name: docker
-lint:
-  name: yamllint
+  name: podman
+lint: |
+  yamllint tasks
 platforms:
   - name: el7
-    image: centos:latest
+    image: centos:7
+    command: /sbin/init
+    capabilities:
+      - SYS_ADMIN
+  - name: el8
+    image: centos:8
     command: /sbin/init
     capabilities:
       - SYS_ADMIN
