@@ -1,0 +1,8 @@
+Code-Review+2: Haïkel Guémar <hguemar@fedoraproject.org>
+Workflow+1: Haïkel Guémar <hguemar@fedoraproject.org>
+Verified+2: Zuul CI <zuul@softwarefactory-project.io>
+Submitted-by: Zuul CI <zuul@softwarefactory-project.io>
+Submitted-at: Thu, 13 Aug 2020 16:29:17 +0000
+Reviewed-on: https://softwarefactory-project.io/r/19264
+Project: ansible-role-openstack-certification
+Branch: refs/heads/master
