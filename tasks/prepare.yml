@@ -1,6 +1,8 @@
 ---
 - name: Subscribe to the rhsm certification repository
   become: true
+  environment:
+    SMDEV_CONTAINER_OFF: "True"
   rhsm_repository:
     name: "{{ openstack_certification_rhsm_repo_name }}"
     state: enabled

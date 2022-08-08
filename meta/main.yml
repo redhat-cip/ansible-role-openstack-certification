@@ -1,5 +1,7 @@
 ---
 galaxy_info:
+  role_name: ansible_role_openstack_certification
+  namespace: dci
   author: Distributed-CI Team
   description: An Ansible role to run the Red Hat OpenStack certification test suite
   company: Red Hat
