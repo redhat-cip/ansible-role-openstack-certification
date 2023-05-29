@@ -1,83 +1,91 @@
 ---
-- name: Copy overcloudrc
-  become: true
-  copy:
-    src: /tmp/overcloudrc
-    dest: /etc/redhat-certification-openstack/overcloudrc
-
-- name: Copy tempest.conf
-  become: true
-  copy:
-    src: /tmp/tempest.conf
-    dest: /etc/redhat-certification-openstack/tempest.conf
-
-- name: Copy tempest.conf (Bug 1628403)
-  become: true
-  copy:
-    src: /tmp/tempest.conf
-    dest: /etc/tempest/tempest.conf
-
-- name: Combine all certification tags, tests and programs
-  set_fact:
-    all_certification_types: '{{ openstack_certification_tags }} + {{ openstack_certification_tests }} + {{ openstack_certification_programs }}'
+- name: Check existence of /etc/redhat-certification/openstack
+  stat:
+    path: /etc/redhat-certification/openstack
+  register: stat_rhcert_conf_path
 
 - block:
-    - name: Register keystone_auth_url
-      shell: "source /etc/redhat-certification-openstack/overcloudrc && echo \"$OS_AUTH_URL\""
-      register: keystone_auth_url
+    - name: Copy overcloudrc
+      become: true
+      copy:
+        src: /tmp/overcloudrc
+        dest: "{{ rhcert_conf_path }}/overcloudrc"
 
-    - name: Register admin_username
-      shell: "source /etc/redhat-certification-openstack/overcloudrc && echo \"$OS_USERNAME\""
-      register: admin_username
+    - name: Copy tempest.conf
+      become: true
+      copy:
+        src: /tmp/tempest.conf
+        dest: "{{ rhcert_conf_path }}/tempest.conf"
 
-    - name: Register admin_password
-      shell: "source /etc/redhat-certification-openstack/overcloudrc && echo \"$OS_PASSWORD\""
-      register: admin_password
+    - name: Copy tempest.conf (Bug 1628403)
+      become: true
+      copy:
+        src: /tmp/tempest.conf
+        dest: /etc/tempest/tempest.conf
 
-    - name: Register admin_tenant_name
-      shell: "source /etc/redhat-certification-openstack/overcloudrc && echo \"$OS_TENANT_NAME\""
-      register: admin_tenant_name
+    - name: Combine all certification tags, tests and programs
+      set_fact:
+        all_certification_types: '{{ openstack_certification_tags }} + {{ openstack_certification_tests }} + {{ openstack_certification_programs }}'
 
-    - name: Register admin_project_name
-      shell: "source /etc/redhat-certification-openstack/overcloudrc && echo \"$OS_PROJECT_NAME\""
-      register: admin_project_name
+    - block:
+        - name: Register keystone_auth_url
+          shell: "source {{ rhcert_conf_path }}/overcloudrc && echo \"$OS_AUTH_URL\""
+          register: keystone_auth_url
 
-    - name: Create the test_config.json file
+        - name: Register admin_username
+          shell: "source {{ rhcert_conf_path }}/overcloudrc && echo \"$OS_USERNAME\""
+          register: admin_username
+
+        - name: Register admin_password
+          shell: "source {{ rhcert_conf_path }}/overcloudrc && echo \"$OS_PASSWORD\""
+          register: admin_password
+
+        - name: Register admin_tenant_name
+          shell: "source {{ rhcert_conf_path }}/overcloudrc && echo \"$OS_TENANT_NAME\""
+          register: admin_tenant_name
+
+        - name: Register admin_project_name
+          shell: "source {{ rhcert_conf_path }}/overcloudrc && echo \"$OS_PROJECT_NAME\""
+          register: admin_project_name
+
+        - name: Create the test_config.json file
+          become: true
+          template:
+            src: test_config.json.j2
+            dest: "{{ rhcert_conf_path }}/test_config.json"
+      when: "'baremetal' not in all_certification_types"
+
+    - name: Create the baremetal.json file
       become: true
       template:
-        src: test_config.json.j2
-        dest: /etc/redhat-certification-openstack/test_config.json
-  when: "'baremetal' not in all_certification_types"
+        src: baremetal.json
+        dest: "{{ rhcert_conf_path }}/baremetal.json"
+      when: "'undercloud' in group_names and 'baremetal' in all_certification_types"
 
-- name: Create the baremetal.json file
-  become: true
-  template:
-    src: baremetal.json
-    dest: /etc/redhat-certification-openstack/baremetal.json
-  when: "'undercloud' in group_names and 'baremetal' in all_certification_types"
+    - name: Run certification test suite with tag argument
+      become: true
+      shell: >
+        set -x
+        rhcert-ci clean all && rhcert-ci run --tag {{ item }} && rhcert-ci save
+      with_items: "{{ openstack_certification_tags }}"
+      ignore_errors: true
+      when: openstack_certification_test_type == "tag"
 
-- name: Run certification test suite with tag argument
-  become: true
-  shell: >
-    set -x
-    rhcert-ci clean all && rhcert-ci run --tag {{ item }} && rhcert-ci save
-  with_items: "{{ openstack_certification_tags }}"
-  ignore_errors: true
-  when: openstack_certification_test_type == "tag"
+    - name: Run certification test suite with program argument
+      become: true
+      shell: >
+        set -x
+        rhcert-ci clean all && rhcert-ci run --program {{ item }} && rhcert-ci save
+      with_items: "{{ openstack_certification_programs }}"
+      ignore_errors: true
+      when: openstack_certification_test_type == "program"
 
-- name: Run certification test suite with program argument
-  become: true
-  shell: >
-    set -x
-    rhcert-ci clean all && rhcert-ci run --program {{ item }} && rhcert-ci save
-  with_items: "{{ openstack_certification_programs }}"
-  ignore_errors: true
-  when: openstack_certification_test_type == "program"
-
-- name: Run certification test suite with test argument
-  become: true
-  shell: >
-    set -x
-    rhcert-ci clean all && rhcert-ci run --test {{ " --test ".join(openstack_certification_tests) }} && rhcert-ci save
-  ignore_errors: true
-  when: openstack_certification_test_type != "tag" and openstack_certification_test_type != "program"
+    - name: Run certification test suite with test argument
+      become: true
+      shell: >
+        set -x
+        rhcert-ci clean all && rhcert-ci run --test {{ " --test ".join(openstack_certification_tests) }} && rhcert-ci save
+      ignore_errors: true
+      when: openstack_certification_test_type != "tag" and openstack_certification_test_type != "program"
+  vars:
+    rhcert_conf_path: "{% if stat_rhcert_conf_path.stat.isdir is defined and stat_rhcert_conf_path.stat.isdir %}/etc/redhat-certification/openstack{% else %}/etc/redhat-certification-openstack{% endif %}"
