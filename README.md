@@ -1,3 +1,6 @@
+⚠️ **Note:** This project has been migrated to a new repository.
+Please visit the new location [here](https://github.com/distributedci/ansible-role-openstack-certification).
+
 # ansible-role-openstack-certification
 
 An Ansible role to automate the certification process.
